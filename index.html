@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous SMS Sender</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a1a1a; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: #2d2d2d; padding: 25px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); width: 100%; max-width: 400px; border: 1px solid #444; }
+        h2 { text-align: center; color: #00d4ff; margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-size: 14px; }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #444; border-radius: 6px; background: #1a1a1a; color: white; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #00d4ff; border: none; border-radius: 6px; color: #1a1a1a; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #00a3cc; }
+        #status { margin-top: 15px; text-align: center; font-size: 14px; padding: 10px; border-radius: 4px; display: none; }
+        .success { background: #1b4332; color: #74c69d; }
+        .error { background: #5a1a1a; color: #ff8080; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>KAEVOR SMS</h2>
+    <label>Phone Number (with Country Code)</label>
+    <input type="text" id="phone" placeholder="+88017XXXXXXXX">
+    
+    <label>Message</label>
+    <textarea id="message" rows="4" placeholder="Type your message here..."></textarea>
+    
+    <button onclick="sendSMS()">Send Message</button>
+    
+    <div id="status"></div>
+</div>
+
+<script>
+    async function sendSMS() {
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+        const statusDiv = document.getElementById('status');
+
+        if(!phone || !message) {
+            alert("Please fill all fields!");
+            return;
+        }
+
+        statusDiv.style.display = "block";
+        statusDiv.className = "";
+        statusDiv.innerHTML = "Sending...";
+
+        try {
+            const response = await fetch('https://textbelt.com/text', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    'phone': phone,
+                    'message': message,
+                    'key': 'textbelt', // Free Key
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                statusDiv.className = "success";
+                statusDiv.innerHTML = `Success! ID: ${data.textId} <br> Remaining: ${data.quotaRemaining}`;
+            } else {
+                statusDiv.className = "error";
+                statusDiv.innerHTML = "Error: " + data.error;
+            }
+        } catch (error) {
+            statusDiv.className = "error";
+            statusDiv.innerHTML = "Connection failed!";
+        }
+    }
+</script>
+
+</body>
+</html>
