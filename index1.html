@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BandBoost 30 — Crack IELTS in 30 Days</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['Space Grotesk', 'sans-serif'],
+        body: ['DM Sans', 'sans-serif'],
+      },
+      colors: {
+        brand: { 50:'#FFF4ED', 100:'#FFE6D5', 200:'#FECCAA', 300:'#FDA96F', 400:'#FB8B3C', 500:'#F96907', 600:'#E25A04', 700:'#B64506', 800:'#8D3709', 900:'#6F2E0B' },
+        surface: { 50:'#F0F0F5', 100:'#C4C4D0', 200:'#8888A0', 300:'#6B6B80', 400:'#3A3A50', 500:'#22222F', 600:'#1A1A26', 700:'#131320', 800:'#0E0E1A', 900:'#08080F' },
+      }
+    }
+  }
+}
+</script>
+<style>
+:root {
+  --bg: #08080f;
+  --bg-card: rgba(255,255,255,0.04);
+  --bg-card-hover: rgba(255,255,255,0.07);
+  --border: rgba(255,255,255,0.08);
+  --accent: #F96907;
+  --accent-light: #FB8B3C;
+  --accent-glow: rgba(249,105,7,0.25);
+  --success: #22C55E;
+  --warning: #FBBF24;
+  --info: #3B82F6;
+  --text: #F0F0F5;
+  --muted: #6B6B80;
+}
+* { box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Space Grotesk', sans-serif; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+.glass { background: var(--bg-card); border: 1px solid var(--border); backdrop-filter: blur(12px); }
+.glass:hover { background: var(--bg-card-hover); }
+.glow-accent { box-shadow: 0 0 40px var(--accent-glow), 0 0 80px rgba(249,105,7,0.1); }
+.gradient-border { position: relative; background: var(--bg-card); border-radius: 16px; overflow: hidden; }
+.gradient-border::before {
+  content: ''; position: absolute; inset: 0; padding: 1px; border-radius: 16px;
+  background: linear-gradient(135deg, var(--accent), transparent 50%, var(--accent-light));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+}
+#heroCanvas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+@keyframes pulseRing { 0% { transform: scale(0.8); opacity: 0.6; } 100% { transform: scale(1.6); opacity: 0; } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.float { animation: float 4s ease-in-out infinite; }
+@keyframes fireFlicker { 0%,100%{transform:scaleY(1) scaleX(1)}25%{transform:scaleY(1.1) scaleX(0.95)}50%{transform:scaleY(0.95) scaleX(1.05)}75%{transform:scaleY(1.05) scaleX(0.98)} }
+.fire-flicker { animation: fireFlicker 0.6s ease-in-out infinite; }
+@keyframes progressFill { from { width: 0; } }
+.progress-animate { animation: progressFill 1.5s ease-out forwards; }
+@keyframes slideUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+.slide-up { opacity: 0; }
+.slide-up.visible { animation: slideUp 0.7s ease-out forwards; }
+.tilt-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.tilt-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.flashcard-inner { transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); transform-style: preserve-3d; }
+.flashcard-inner.flipped { transform: rotateY(180deg); }
+.flashcard-front, .flashcard-back { backface-visibility: hidden; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 2rem; border-radius: 16px; }
+.flashcard-back { transform: rotateY(180deg); }
+.nav-link { position: relative; }
+.nav-link::after { content:''; position:absolute; bottom:-4px; left:50%; width:0; height:2px; background:var(--accent); transition:all 0.3s; transform:translateX(-50%); }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.tab-btn.active { color: var(--accent); border-color: var(--accent); }
+.module-tab.active { color: var(--accent); border-color: var(--accent); background: rgba(249,105,7,0.08); }
+.toast { position:fixed; bottom:24px; right:24px; z-index:9999; padding:14px 24px; border-radius:12px; background:#1a1a26; border:1px solid var(--border); box-shadow:0 10px 40px rgba(0,0,0,0.5); transform:translateX(120%); transition:transform 0.4s ease; font-size:14px; }
+.toast.show { transform: translateX(0); }
+@keyframes badgeShine { 0%{background-position:-200% center}100%{background-position:200% center} }
+.badge-shine { background:linear-gradient(90deg,transparent 30%,rgba(255,255,255,0.15) 50%,transparent 70%); background-size:200% 100%; animation:badgeShine 3s ease-in-out infinite; }
+.day-cell { transition: all 0.3s ease; cursor: pointer; }
+.day-cell:hover { transform: scale(1.05); }
+.day-cell.completed { border-color: var(--success) !important; background: rgba(34,197,94,0.08); }
+.day-cell.today { border-color: var(--accent) !important; background: rgba(249,105,7,0.08); }
+.day-cell.locked { opacity: 0.35; cursor: not-allowed; }
+input[type="range"] { -webkit-appearance:none; width:100%; height:6px; background:linear-gradient(to right,var(--accent) var(--val,50%),rgba(255,255,255,0.1) var(--val,50%)); border-radius:3px; outline:none; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance:none; width:22px; height:22px; background:var(--accent); border-radius:50%; cursor:pointer; box-shadow:0 0 12px var(--accent-glow); }
+.modal-overlay { position:fixed; inset:0; z-index:9000; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px); display:none; align-items:center; justify-content:center; }
+.modal-overlay.open { display: flex; }
+.noise-overlay { position:absolute; inset:0; opacity:0.03; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.input-field { width:100%; background:rgba(34,34,47,0.8); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:12px 16px; font-size:14px; color:var(--text); outline:none; transition:border-color 0.3s; }
+.input-field:focus { border-color: var(--accent); }
+.input-field::placeholder { color: rgba(107,107,128,0.7); }
+.input-error { border-color: #EF4444 !important; }
+.error-msg { color: #EF4444; font-size: 12px; margin-top: 4px; display: none; }
+.step-dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.1); transition:all 0.3s; }
+.step-dot.active { background:var(--accent); box-shadow:0 0 8px var(--accent-glow); }
+.step-dot.done { background:var(--success); }
+.onboard-opt { transition: all 0.2s; }
+.onboard-opt.selected { background:rgba(249,105,7,0.15) !important; border-color:rgba(249,105,7,0.4) !important; color:#FB8B3C !important; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:0.01ms!important; transition-duration:0.01ms!important; } }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- Toast -->
+<div id="toast" class="toast"><i class="fas fa-check-circle text-green-400 mr-2"></i><span id="toastMsg"></span></div>
+
+<!-- NAVIGATION -->
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300" style="background:rgba(8,8,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.05);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="#" class="flex items-center gap-2">
+      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-400 flex items-center justify-center"><i class="fas fa-bolt text-white text-sm"></i></div>
+      <span class="font-display font-bold text-lg tracking-tight">BandBoost <span class="text-brand-500">30</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#features" class="nav-link text-surface-200 hover:text-white transition">Features</a>
+      <a href="#roadmap" class="nav-link text-surface-200 hover:text-white transition">30-Day Plan</a>
+      <a href="#modules" class="nav-link text-surface-200 hover:text-white transition">Modules</a>
+      <a href="#dashboard" class="nav-link text-surface-200 hover:text-white transition">Dashboard</a>
+      <a href="#pricing" class="nav-link text-surface-200 hover:text-white transition">Pricing</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <!-- Not logged in -->
+      <div id="navAuthBtns" class="flex items-center gap-3">
+        <button onclick="openModal('authModal');switchAuthTab('login')" class="hidden sm:block text-sm text-surface-200 hover:text-white transition px-4 py-2">Log In</button>
+        <button onclick="openModal('authModal');switchAuthTab('signup')" class="text-sm font-semibold bg-brand-500 hover:bg-brand-600 text-white px-5 py-2.5 rounded-xl transition-all hover:shadow-lg hover:shadow-brand-500/25">Sign Up Free</button>
+      </div>
+      <!-- Logged in -->
+      <div id="navUserMenu" class="hidden items-center gap-3 relative">
+        <div class="flex items-center gap-2 glass rounded-xl px-3 py-1.5">
+          <div class="fire-flicker text-lg">🔥</div>
+          <span id="navStreak" class="font-display font-bold text-sm">7</span>
+        </div>
+        <button onclick="toggleUserDropdown()" class="flex items-center gap-2 hover:bg-white/[0.05] rounded-xl px-3 py-2 transition" id="navUserBtn">
+          <div id="navAvatar" class="w-8 h-8 rounded-full bg-brand-500/30 flex items-center justify-center font-display font-bold text-sm text-brand-400">U</div>
+          <span id="navName" class="text-sm font-medium hidden sm:block">User</span>
+          <i class="fas fa-chevron-down text-xs text-surface-300"></i>
+        </button>
+        <!-- Dropdown -->
+        <div id="userDropdown" class="hidden absolute top-full right-0 mt-2 w-56 glass rounded-2xl py-2 shadow-2xl" style="background:rgba(18,18,28,0.97);border:1px solid rgba(255,255,255,0.1);">
+          <div class="px-4 py-3 border-b border-white/5">
+            <p id="dropdownName" class="font-medium text-sm">User</p>
+            <p id="dropdownEmail" class="text-xs text-surface-300 mt-0.5">user@email.com</p>
+          </div>
+          <a href="#dashboard" onclick="toggleUserDropdown()" class="flex items-center gap-3 px-4 py-2.5 text-sm text-surface-200 hover:text-white hover:bg-white/[0.05] transition"><i class="fas fa-chart-line text-brand-400 w-4"></i> Dashboard</a>
+          <a href="#" onclick="openModal('profileModal');toggleUserDropdown()" class="flex items-center gap-3 px-4 py-2.5 text-sm text-surface-200 hover:text-white hover:bg-white/[0.05] transition"><i class="fas fa-user-cog text-blue-400 w-4"></i> Profile Settings</a>
+          <a href="#" onclick="toggleUserDropdown()" class="flex items-center gap-3 px-4 py-2.5 text-sm text-surface-200 hover:text-white hover:bg-white/[0.05] transition"><i class="fas fa-crown text-yellow-400 w-4"></i> Upgrade Plan</a>
+          <div class="border-t border-white/5 mt-1 pt-1">
+            <button onclick="logoutUser()" class="flex items-center gap-3 px-4 py-2.5 text-sm text-red-400 hover:bg-red-500/10 w-full transition"><i class="fas fa-sign-out-alt w-4"></i> Log Out</button>
+          </div>
+        </div>
+      </div>
+      <button id="mobileMenuBtn" class="md:hidden text-surface-200 hover:text-white p-2"><i class="fas fa-bars text-lg"></i></button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 space-y-2">
+    <a href="#features" class="block py-2 text-surface-200 hover:text-white transition text-sm">Features</a>
+    <a href="#roadmap" class="block py-2 text-surface-200 hover:text-white transition text-sm">30-Day Plan</a>
+    <a href="#modules" class="block py-2 text-surface-200 hover:text-white transition text-sm">Modules</a>
+    <a href="#dashboard" class="block py-2 text-surface-200 hover:text-white transition text-sm">Dashboard</a>
+    <a href="#pricing" class="block py-2 text-surface-200 hover:text-white transition text-sm">Pricing</a>
+  </div>
+</nav>
+
+<!-- ==================== AUTH MODAL ==================== -->
+<div id="authModal" class="modal-overlay" onclick="if(event.target===this)closeModal('authModal')">
+  <div class="rounded-3xl p-8 w-full max-w-md mx-4 relative" style="background:rgba(14,14,22,0.98);border:1px solid rgba(255,255,255,0.1);">
+    <button onclick="closeModal('authModal')" class="absolute top-4 right-4 text-surface-300 hover:text-white transition" aria-label="Close"><i class="fas fa-times"></i></button>
+
+    <div class="flex gap-6 mb-6">
+      <button id="loginTab" onclick="switchAuthTab('login')" class="font-display font-semibold text-lg border-b-2 border-brand-500 pb-1 text-white transition">Log In</button>
+      <button id="signupTab" onclick="switchAuthTab('signup')" class="font-display font-semibold text-lg border-b-2 border-transparent pb-1 text-surface-300 hover:text-white transition">Sign Up</button>
+    </div>
+
+    <!-- Social buttons -->
+    <div class="space-y-3 mb-6">
+      <button onclick="socialLogin('google')" class="w-full glass hover:bg-white/[0.08] rounded-xl py-3 text-sm font-medium flex items-center justify-center gap-3 transition">
+        <i class="fab fa-google text-red-400"></i> Continue with Google
+      </button>
+      <button onclick="socialLogin('facebook')" class="w-full glass hover:bg-white/[0.08] rounded-xl py-3 text-sm font-medium flex items-center justify-center gap-3 transition">
+        <i class="fab fa-facebook text-blue-400"></i> Continue with Facebook
+      </button>
+    </div>
+    <div class="flex items-center gap-3 mb-6">
+      <div class="flex-1 h-px bg-white/10"></div>
+      <span class="text-xs text-surface-300">or use email</span>
+      <div class="flex-1 h-px bg-white/10"></div>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div id="loginForm">
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs text-surface-300 mb-1 block font-medium">Email Address</label>
+          <input id="loginEmail" type="email" placeholder="your@email.com" class="input-field">
+          <p id="loginEmailErr" class="error-msg">Please enter a valid email</p>
+        </div>
+        <div>
+          <label class="text-xs text-surface-300 mb-1 block font-medium">Password</label>
+          <div class="relative">
+            <input id="loginPass" type="password" placeholder="Enter your password" class="input-field pr-12">
+            <button type="button" onclick="togglePassVis('loginPass',this)" class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-300 hover:text-white transition" aria-label="Toggle password visibility"><i class="fas fa-eye text-sm"></i></button>
+          </div>
+          <p id="loginPassErr" class="error-msg">Password must be at least 6 characters</p>
+        </div>
+        <button onclick="handleLogin()" class="w-full bg-brand-500 hover:bg-brand-600 text-white rounded-xl py-3 text-sm font-semibold transition-all hover:shadow-lg hover:shadow-brand-500/25">Log In</button>
+        <p class="text-center text-xs text-surface-300">Don't have an account? <button onclick="switchAuthTab('signup')" class="text-brand-400 hover:underline">Sign up</button></p>
+      </div>
+    </div>
+
+    <!-- SIGNUP FORM -->
+    <div id="signupForm" class="hidden">
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs text-surface-300 mb-1 block font-medium">Full Name</label>
+          <input id="signupName" type="text" placeholder="Your full name" class="input-field">
+          <p id="signupNameErr" class="error-msg">Name is required</p>
+        </div>
+        <div>
+          <label class="text-xs text-surface-300 mb-1 block font-medium">Email Address</label>
+          <input id="signupEmail" type="email" placeholder="your@email.com" class="input-field">
+          <p id="signupEmailErr" class="error-msg">Please enter a valid email</p>
+        </div>
+        <div>
+          <label class="text-xs text-surface-300 mb-1 block font-medium">Password</label>
+          <div class="relative">
+            <input id="signupPass" type="password" placeholder="Min 6 characters" class="input-field pr-12">
+            <button type="button" onclick="togglePassVis('signupPass',this)" class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-300 hover:text-white transition" aria-label="Toggle password visibility"><i class="fas fa-eye text-sm"></i></button>
+          </div>
+          <p id="signupPassErr" class="error-msg">Password must be at least 6 characters</p>
+          <!-- Password strength -->
+          <div class="flex gap-1 mt-2" id="passStrengthBar">
+            <div class="h-1 flex-1 rounded-full bg-surface-500 transition-all" id="str1"></div>
+            <div class="h-1 flex-1 rounded-full bg-surface-500 transition-all" id="str2"></div>
+            <div class="h-1 flex-1 rounded-full bg-surface-500 transition-all" id="str3"></div>
+            <div class="h-1 flex-1 rounded-full bg-surface-500 transition-all" id="str4"></div>
+          </div>
+          <p id="passStrengthText" class="text-xs text-surface-300 mt-1"></p>
+        </div>
+        <div>
+          <label class="text-xs text-surface-300 mb-1 block font-medium">Confirm Password</label>
+          <input id="signupPassConfirm" type="password" placeholder="Repeat password" class="input-field">
+          <p id="signupPassConfirmErr" class="error-msg">Passwords do not match</p>
+        </div>
+        <button onclick="handleSignup()" class="w-full bg-brand-500 hover:bg-brand-600 text-white rounded-xl py-3 text-sm font-semibold transition-all hover:shadow-lg hover:shadow-brand-500/25">Create Account</button>
+        <p class="text-center text-xs text-surface-300">Already have an account? <button onclick="switchAuthTab('login')" class="text-brand-400 hover:underline">Log in</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ONBOARDING MODAL ==================== -->
+<div id="onboardingModal" class="modal-overlay" style="z-index:9001;">
+  <div class="rounded-3xl p-8 w-full max-w-lg mx-4 relative" style="background:rgba(14,14,22,0.98);border:1px solid rgba(255,255,255,0.1);">
+    <!-- Step indicator -->
+    <div class="flex items-center justify-center gap-3 mb-8">
+      <div class="step-dot active" id="stepDot1"></div>
+      <div class="w-8 h-px bg-white/10"></div>
+      <div class="step-dot" id="stepDot2"></div>
+      <div class="w-8 h-px bg-white/10"></div>
+      <div class="step-dot" id="stepDot3"></div>
+    </div>
+
+    <!-- Step 1: Level & Target -->
+    <div id="onboardStep1">
+      <h3 class="font-display font-bold text-xl mb-2">Welcome! Let's set your goals</h3>
+      <p class="text-surface-300 text-sm mb-6">This helps AI create your personalized 30-day roadmap.</p>
+      <div class="space-y-5">
+        <div>
+          <label class="text-xs text-surface-300 mb-2 block font-medium">Current IELTS Level</label>
+          <div class="grid grid-cols-3 gap-2">
+            <button class="onboard-opt glass rounded-xl py-3 text-sm text-surface-200 hover:text-white transition" data-group="level" data-val="beginner" onclick="selectOnboardOpt(this)">
+              <i class="fas fa-seedling block text-lg mb-1 text-green-400"></i>Beginner<br><span class="text-xs text-surface-300">Band 4-5</span>
+            </button>
+            <button class="onboard-opt glass rounded-xl py-3 text-sm text-surface-200 hover:text-white transition" data-group="level" data-val="intermediate" onclick="selectOnboardOpt(this)">
+              <i class="fas fa-fire block text-lg mb-1 text-yellow-400"></i>Intermediate<br><span class="text-xs text-surface-300">Band 5.5-6</span>
+            </button>
+            <button class="onboard-opt glass rounded-xl py-3 text-sm text-surface-200 hover:text-white transition" data-group="level" data-val="advanced" onclick="selectOnboardOpt(this)">
+              <i class="fas fa-rocket block text-lg mb-1 text-brand-400"></i>Advanced<br><span class="text-xs text-surface-300">Band 6.5+</span>
+            </button>
+          </div>
+          <p id="levelErr" class="error-msg">Please select your level</p>
+        </div>
+        <div>
+          <label class="text-xs text-surface-300 mb-2 block font-medium">Target Band Score</label>
+          <div class="grid grid-cols-4 gap-2">
+            <button class="onboard-opt glass rounded-xl py-3 text-sm text-surface-200 hover:text-white transition font-display font-bold" data-group="target" data-val="6.0" onclick="selectOnboardOpt(this)">6.0</button>
+            <button class="onboard-opt glass rounded-xl py-3 text-sm text-surface-200 hover:text-white transition font-display font-bold" data-group="target" data-val="6.5" onclick="selectOnboardOpt(this)">6.5</button>
+            <button class="onboard-opt glass rounded-xl py-3 text-sm text-surface-200 hover:text-white transition font-display font-bold" data-group="target" data-val="7.0" onclick="selectOnboardOpt(this)">7.0</button>
+            <button class="onboard-opt glass rounded-xl py-3 text-sm text-surface-200 hover:text-white transition font-display font-bold" data-group="target" data-val="7.5+" onclick="selectOnboardOpt(this)">7.5+</button>
+          </div>
+          <p id="targetErr" class="error-msg">Please select your target band</p>
+        </div>
+        <button onclick="nextOnboardStep(2)" class="w-full bg-brand-500 hover:bg-brand-600 text-white rounded-xl py-3 text-sm font-semibold transition">Next Step <i class="fas fa-arrow-right ml-1"></i></button>
+      </div>
+    </div>
+
+    <!-- Step 2: Exam Date & Weak Section -->
+    <div id="onboardStep2" class="hidden">
+      <h3 class="font-display font-bold text-xl mb-2">Almost there!</h3>
+      <p class="text-surface-300 text-sm mb-6">Help us fine-tune your study plan.</p>
+      <div class="space-y-5">
+        <div>
+          <label class="text-xs text-surface-300 mb-2 block font-medium">When is your exam?</label>
+          <input id="examDate" type="date" class="input-field" style="color-scheme:dark;">
+          <p id="examDateErr" class="error-msg">Please select your exam date</p>
+        </div>
+        <div>
+          <label class="text-xs text-surface-300 mb-2 block font-medium">Weakest Section</label>
+          <div class="grid grid-cols-2 gap-3">
+            <button class="onboard-opt glass rounded-xl py-3 text-sm text-surface-200 hover:text-white transition" data-group="weak" data-val="reading" onclick="selectOnboardOpt(this)">
+              <i class="fas fa-book-open mr-2 text-brand-400"></i>Reading
+            </button>
+            <button class="onboard-opt glass rounded-xl py-3 text-sm text-surface-200 hover:text-white transition" data-group="weak" data-val="listening" onclick="selectOnboardOpt(this)">
+              <i class="fas fa-headphones mr-2 text-green-400"></i>Listening
+            </button>
+            <button class="onboard-opt glass rounded-xl py-3 text-sm text-surface-200 hover:text-white transition" data-group="weak" data-val="writing" onclick="selectOnboardOpt(this)">
+              <i class="fas fa-pen-nib mr-2 text-blue-400"></i>Writing
+            </button>
+            <button class="onboard-opt glass rounded-xl py-3 text-sm text-surface-200 hover:text-white transition" data-group="weak" data-val="speaking" onclick="selectOnboardOpt(this)">
+              <i class="fas fa-microphone mr-2 text-purple-400"></i>Speaking
+            </button>
+          </div>
+          <p id="weakErr" class="error-msg">Please select your weakest section</p>
+        </div>
+        <div>
+          <label class="text-xs text-surface-300 mb-2 block font-medium">How many hours/day can you study?</label>
+          <div class="grid grid-cols-3 gap-2">
+            <button class="onboard-opt glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white transition" data-group="hours" data-val="1" onclick="selectOnboardOpt(this)">1 hour</button>
+            <button class="onboard-opt glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white transition" data-group="hours" data-val="2" onclick="selectOnboardOpt(this)">2 hours</button>
+            <button class="onboard-opt glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white transition" data-group="hours" data-val="3+" onclick="selectOnboardOpt(this)">3+ hours</button>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <button onclick="prevOnboardStep(1)" class="flex-1 glass hover:bg-white/[0.08] rounded-xl py-3 text-sm font-semibold transition"><i class="fas fa-arrow-left mr-1"></i> Back</button>
+          <button onclick="nextOnboardStep(3)" class="flex-1 bg-brand-500 hover:bg-brand-600 text-white rounded-xl py-3 text-sm font-semibold transition">Next <i class="fas fa-arrow-right ml-1"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Ready -->
+    <div id="onboardStep3" class="hidden">
+      <div class="text-center">
+        <div class="w-20 h-20 rounded-2xl bg-brand-500/15 flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-magic text-brand-400 text-3xl"></i>
+        </div>
+        <h3 class="font-display font-bold text-2xl mb-2">Your AI Roadmap is Ready!</h3>
+        <p class="text-surface-300 text-sm mb-6">Based on your preferences, we've crafted a personalized 30-day study plan.</p>
+
+        <!-- Summary card -->
+        <div class="glass rounded-xl p-4 text-left mb-6 space-y-3">
+          <div class="flex justify-between text-sm"><span class="text-surface-300">Current Level</span><span id="sumLevel" class="font-medium text-brand-400">—</span></div>
+          <div class="flex justify-between text-sm"><span class="text-surface-300">Target Band</span><span id="sumTarget" class="font-medium text-brand-400">—</span></div>
+          <div class="flex justify-between text-sm"><span class="text-surface-300">Exam Date</span><span id="sumDate" class="font-medium">—</span></div>
+          <div class="flex justify-between text-sm"><span class="text-surface-300">Weak Area</span><span id="sumWeak" class="font-medium text-yellow-400">—</span></div>
+          <div class="flex justify-between text-sm"><span class="text-surface-300">Study Time</span><span id="sumHours" class="font-medium">—</span></div>
+        </div>
+
+        <button onclick="finishOnboarding()" class="w-full bg-brand-500 hover:bg-brand-600 text-white rounded-xl py-3.5 text-sm font-semibold transition-all hover:shadow-lg hover:shadow-brand-500/25">
+          Start My 30-Day Sprint <i class="fas fa-rocket ml-1"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PROFILE MODAL ==================== -->
+<div id="profileModal" class="modal-overlay" onclick="if(event.target===this)closeModal('profileModal')">
+  <div class="rounded-3xl p-8 w-full max-w-md mx-4 relative" style="background:rgba(14,14,22,0.98);border:1px solid rgba(255,255,255,0.1);">
+    <button onclick="closeModal('profileModal')" class="absolute top-4 right-4 text-surface-300 hover:text-white transition" aria-label="Close"><i class="fas fa-times"></i></button>
+    <h3 class="font-display font-bold text-xl mb-6">Profile Settings</h3>
+    <div class="space-y-4">
+      <div class="flex items-center gap-4 mb-2">
+        <div id="profileAvatar" class="w-16 h-16 rounded-2xl bg-brand-500/20 flex items-center justify-center font-display font-bold text-2xl text-brand-400">U</div>
+        <div>
+          <p id="profileName" class="font-medium">User</p>
+          <p id="profileEmail" class="text-xs text-surface-300">user@email.com</p>
+        </div>
+      </div>
+      <div>
+        <label class="text-xs text-surface-300 mb-1 block font-medium">Update Name</label>
+        <input id="profileNameInput" type="text" class="input-field" placeholder="Your name">
+      </div>
+      <div class="glass rounded-xl p-4">
+        <p class="text-xs text-surface-300 mb-2">Account Stats</p>
+        <div class="grid grid-cols-3 gap-3 text-center">
+          <div><div id="profStreak" class="font-display font-bold text-lg text-brand-400">0</div><div class="text-xs text-surface-300">Streak</div></div>
+          <div><div id="profXP" class="font-display font-bold text-lg text-green-400">0</div><div class="text-xs text-surface-300">Total XP</div></div>
+          <div><div id="profDay" class="font-display font-bold text-lg text-blue-400">0</div><div class="text-xs text-surface-300">Day</div></div>
+        </div>
+      </div>
+      <button onclick="updateProfile()" class="w-full bg-brand-500 hover:bg-brand-600 text-white rounded-xl py-3 text-sm font-semibold transition">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+  <canvas id="heroCanvas"></canvas>
+  <div class="noise-overlay"></div>
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-20 blur-3xl" style="background:radial-gradient(circle,var(--accent) 0%,transparent 70%)"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-10 blur-3xl" style="background:radial-gradient(circle,#22C55E 0%,transparent 70%)"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+    <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-medium text-brand-400 mb-6 slide-up"><span class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span> AI-Powered IELTS Preparation</div>
+    <h1 class="font-display text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-6 slide-up" style="animation-delay:0.1s">Crack IELTS in<br><span class="bg-gradient-to-r from-brand-400 via-brand-500 to-brand-300 bg-clip-text text-transparent">30 Days</span></h1>
+    <p class="text-surface-200 text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed slide-up" style="animation-delay:0.2s">Structured daily roadmap, AI-powered practice, real mock tests, and smart analytics. From beginner to Band 7+ — one day at a time.</p>
+    <div class="glass rounded-2xl p-6 max-w-md mx-auto mb-8 slide-up" style="animation-delay:0.3s">
+      <div class="flex items-center justify-between mb-3"><span class="text-sm text-surface-200">Your Target Band</span><span id="bandValue" class="font-display font-bold text-2xl text-brand-400">7.0</span></div>
+      <input type="range" id="bandSlider" min="4" max="9" step="0.5" value="7" class="w-full" oninput="updateBandSlider(this)">
+      <div class="flex justify-between text-xs text-surface-300 mt-1"><span>4.0</span><span>5.5</span><span>7.0</span><span>8.5</span><span>9.0</span></div>
+    </div>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 slide-up" style="animation-delay:0.4s">
+      <button onclick="handleStartFree()" class="group relative bg-brand-500 hover:bg-brand-600 text-white font-semibold px-8 py-4 rounded-2xl text-base transition-all hover:shadow-xl hover:shadow-brand-500/30 hover:-translate-y-0.5">Start Your 30-Day Sprint <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i></button>
+      <a href="#roadmap" class="glass hover:bg-white/[0.08] text-surface-100 font-medium px-8 py-4 rounded-2xl text-base transition-all flex items-center gap-2"><i class="fas fa-play-circle text-brand-400"></i> See the Roadmap</a>
+    </div>
+    <div class="grid grid-cols-3 gap-6 max-w-lg mx-auto slide-up" style="animation-delay:0.5s">
+      <div class="text-center"><div class="font-display font-bold text-2xl sm:text-3xl text-white counter" data-target="47850">0</div><div class="text-xs text-surface-300 mt-1">Students Trained</div></div>
+      <div class="text-center"><div class="font-display font-bold text-2xl sm:text-3xl text-brand-400">+1.8</div><div class="text-xs text-surface-300 mt-1">Avg Band Gain</div></div>
+      <div class="text-center"><div class="font-display font-bold text-2xl sm:text-3xl text-white counter" data-target="2340">0</div><div class="text-xs text-surface-300 mt-1">Daily Learners</div></div>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-surface-300 animate-bounce"><span class="text-xs">Scroll to explore</span><i class="fas fa-chevron-down text-sm"></i></div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="relative py-24 px-4">
+  <div class="noise-overlay"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Why BandBoost 30</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Everything You Need to<br><span class="text-brand-400">Ace IELTS</span></h2>
+      <p class="text-surface-200 max-w-xl mx-auto">Six powerful modules driven by AI, designed to take you from zero to exam-ready in exactly 30 days.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="gradient-border tilt-card rounded-2xl p-6 group"><div class="w-12 h-12 rounded-xl bg-brand-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><i class="fas fa-microphone-alt text-brand-400 text-xl"></i></div><h3 class="font-display font-semibold text-lg mb-2">AI Speaking Coach</h3><p class="text-surface-200 text-sm leading-relaxed">Real-time pronunciation scoring, fluency analysis, filler word detection, and instant feedback on responses.</p></div>
+      <div class="gradient-border tilt-card rounded-2xl p-6 group"><div class="w-12 h-12 rounded-xl bg-green-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><i class="fas fa-pen-fancy text-green-400 text-xl"></i></div><h3 class="font-display font-semibold text-lg mb-2">AI Writing Evaluator</h3><p class="text-surface-200 text-sm leading-relaxed">Grammar correction, coherence check, lexical resource analysis, and band prediction for both tasks.</p></div>
+      <div class="gradient-border tilt-card rounded-2xl p-6 group"><div class="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><i class="fas fa-clipboard-check text-blue-400 text-xl"></i></div><h3 class="font-display font-semibold text-lg mb-2">Full Mock Tests</h3><p class="text-surface-200 text-sm leading-relaxed">Real exam conditions with timer, authentic difficulty, and AI-powered exam analyzer.</p></div>
+      <div class="gradient-border tilt-card rounded-2xl p-6 group"><div class="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><i class="fas fa-calendar-check text-purple-400 text-xl"></i></div><h3 class="font-display font-semibold text-lg mb-2">Smart Daily Planner</h3><p class="text-surface-200 text-sm leading-relaxed">AI adjusts your plan if you miss a day. Personalized tasks based on your weak areas.</p></div>
+      <div class="gradient-border tilt-card rounded-2xl p-6 group"><div class="w-12 h-12 rounded-xl bg-yellow-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><i class="fas fa-fire text-yellow-400 text-xl"></i></div><h3 class="font-display font-semibold text-lg mb-2">Gamification & Streaks</h3><p class="text-surface-200 text-sm leading-relaxed">Earn XP, maintain streaks, unlock badges, and compete on leaderboards.</p></div>
+      <div class="gradient-border tilt-card rounded-2xl p-6 group"><div class="w-12 h-12 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><i class="fas fa-chart-line text-cyan-400 text-xl"></i></div><h3 class="font-display font-semibold text-lg mb-2">Progress Analytics</h3><p class="text-surface-200 text-sm leading-relaxed">AI-predicted band scores, weak area identification, and readiness assessment.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 30-DAY ROADMAP -->
+<section id="roadmap" class="relative py-24 px-4" style="background:linear-gradient(180deg,transparent 0%,rgba(249,105,7,0.03) 50%,transparent 100%)">
+  <div class="noise-overlay"></div>
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Structured Roadmap</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Your 30-Day <span class="text-brand-400">Journey</span></h2>
+      <p class="text-surface-200 max-w-xl mx-auto">Four focused weeks. From foundations to full exam readiness. Click any day to see tasks.</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <button class="tab-btn active glass px-5 py-2.5 rounded-xl text-sm font-semibold border border-transparent transition-all" data-week="1" onclick="showWeek(1)">Week 1 — Foundation</button>
+      <button class="tab-btn glass px-5 py-2.5 rounded-xl text-sm font-semibold border border-transparent transition-all" data-week="2" onclick="showWeek(2)">Week 2 — Skill Building</button>
+      <button class="tab-btn glass px-5 py-2.5 rounded-xl text-sm font-semibold border border-transparent transition-all" data-week="3" onclick="showWeek(3)">Week 3 — Advanced</button>
+      <button class="tab-btn glass px-5 py-2.5 rounded-xl text-sm font-semibold border border-transparent transition-all" data-week="4" onclick="showWeek(4)">Week 4 — Exam Mode</button>
+    </div>
+    <div id="weekContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4"></div>
+    <div id="dayDetail" class="mt-8 glass rounded-2xl p-6 hidden">
+      <div class="flex items-center justify-between mb-4"><h3 id="dayDetailTitle" class="font-display font-bold text-xl"></h3><button onclick="document.getElementById('dayDetail').classList.add('hidden')" class="text-surface-300 hover:text-white transition"><i class="fas fa-times"></i></button></div>
+      <div id="dayDetailContent" class="space-y-3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section id="modules" class="relative py-24 px-4">
+  <div class="noise-overlay"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Complete Practice</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Four Core <span class="text-brand-400">Modules</span></h2>
+    </div>
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <button class="module-tab active flex items-center gap-2 glass px-5 py-3 rounded-xl text-sm font-semibold border border-transparent transition-all" data-mod="reading" onclick="showModule('reading')"><i class="fas fa-book-open text-brand-400"></i> Reading</button>
+      <button class="module-tab flex items-center gap-2 glass px-5 py-3 rounded-xl text-sm font-semibold border border-transparent transition-all" data-mod="listening" onclick="showModule('listening')"><i class="fas fa-headphones text-green-400"></i> Listening</button>
+      <button class="module-tab flex items-center gap-2 glass px-5 py-3 rounded-xl text-sm font-semibold border border-transparent transition-all" data-mod="writing" onclick="showModule('writing')"><i class="fas fa-pen-nib text-blue-400"></i> Writing</button>
+      <button class="module-tab flex items-center gap-2 glass px-5 py-3 rounded-xl text-sm font-semibold border border-transparent transition-all" data-mod="speaking" onclick="showModule('speaking')"><i class="fas fa-microphone text-purple-400"></i> Speaking</button>
+    </div>
+    <div id="moduleContent" class="gradient-border rounded-2xl p-8"></div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="relative py-24 px-4" style="background:linear-gradient(180deg,transparent 0%,rgba(249,105,7,0.03) 50%,transparent 100%)">
+  <div class="noise-overlay"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Your Command Center</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Smart <span class="text-brand-400">Dashboard</span></h2>
+    </div>
+    <!-- Not logged state -->
+    <div id="dashLocked" class="text-center glass rounded-3xl p-12">
+      <div class="w-20 h-20 rounded-2xl bg-brand-500/10 flex items-center justify-center mx-auto mb-6"><i class="fas fa-lock text-brand-400 text-3xl"></i></div>
+      <h3 class="font-display font-bold text-2xl mb-2">Log In to Access Your Dashboard</h3>
+      <p class="text-surface-300 text-sm mb-6 max-w-md mx-auto">Sign in to see your personalized study plan, track progress, and get AI-powered insights.</p>
+      <button onclick="openModal('authModal');switchAuthTab('login')" class="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-8 py-3.5 rounded-xl text-sm transition-all hover:shadow-lg hover:shadow-brand-500/25">Log In Now</button>
+    </div>
+    <!-- Logged in state -->
+    <div id="dashActive" class="hidden glass rounded-3xl p-6 sm:p-8 glow-accent">
+      <div class="grid lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 space-y-5">
+          <div class="flex items-center justify-between">
+            <div><h3 class="font-display font-bold text-xl">Today's Tasks</h3><p class="text-surface-300 text-sm mt-1" id="dashDayInfo">Day 7 of 30</p></div>
+            <div class="flex items-center gap-2"><div class="fire-flicker text-2xl">🔥</div><div><div class="font-display font-bold text-lg leading-none" id="dashStreak">7</div><div class="text-xs text-surface-300">Day Streak</div></div></div>
+          </div>
+          <div class="space-y-3" id="taskList">
+            <div class="flex items-center gap-4 glass rounded-xl p-4 cursor-pointer" onclick="toggleTask(this)"><div class="w-6 h-6 rounded-full border-2 border-green-500 bg-green-500/20 flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-green-400 text-xs"></i></div><div class="flex-1"><span class="text-sm font-medium line-through text-surface-300">2 Reading Passages</span></div><span class="text-xs text-green-400 font-medium">+25 XP</span></div>
+            <div class="flex items-center gap-4 glass rounded-xl p-4 cursor-pointer" onclick="toggleTask(this)"><div class="task-check w-6 h-6 rounded-full border-2 border-surface-300 flex items-center justify-center flex-shrink-0 transition-all"></div><div class="flex-1"><span class="text-sm font-medium">1 Listening Test</span></div><span class="text-xs text-brand-400 font-medium">+30 XP</span></div>
+            <div class="flex items-center gap-4 glass rounded-xl p-4 cursor-pointer" onclick="toggleTask(this)"><div class="task-check w-6 h-6 rounded-full border-2 border-surface-300 flex items-center justify-center flex-shrink-0 transition-all"></div><div class="flex-1"><span class="text-sm font-medium">20 Vocabulary Words</span></div><span class="text-xs text-brand-400 font-medium">+15 XP</span></div>
+            <div class="flex items-center gap-4 glass rounded-xl p-4 cursor-pointer" onclick="toggleTask(this)"><div class="task-check w-6 h-6 rounded-full border-2 border-surface-300 flex items-center justify-center flex-shrink-0 transition-all"></div><div class="flex-1"><span class="text-sm font-medium">Speaking Cue Card Practice</span></div><span class="text-xs text-brand-400 font-medium">+35 XP</span></div>
+            <div class="flex items-center gap-4 glass rounded-xl p-4 cursor-pointer" onclick="toggleTask(this)"><div class="task-check w-6 h-6 rounded-full border-2 border-surface-300 flex items-center justify-center flex-shrink-0 transition-all"></div><div class="flex-1"><span class="text-sm font-medium">Writing Task 2 — Essay</span></div><span class="text-xs text-brand-400 font-medium">+40 XP</span></div>
+          </div>
+          <div class="glass rounded-xl p-4"><div class="flex items-center justify-between mb-2"><span class="text-sm font-medium">Daily XP Progress</span><span class="text-sm text-brand-400 font-semibold" id="dashXPText">25 / 145 XP</span></div><div class="w-full h-3 rounded-full bg-surface-600 overflow-hidden"><div id="dashXPBar" class="h-full rounded-full bg-gradient-to-r from-brand-600 to-brand-400 progress-animate" style="width:17%"></div></div></div>
+        </div>
+        <div class="space-y-5">
+          <div class="glass rounded-xl p-5 text-center">
+            <svg width="120" height="120" class="transform -rotate-90 mx-auto"><circle cx="60" cy="60" r="52" stroke="rgba(255,255,255,0.06)" stroke-width="8" fill="none"/><circle id="dashProgressCircle" cx="60" cy="60" r="52" stroke="url(#progGrad)" stroke-width="8" fill="none" stroke-dasharray="326.73" stroke-dashoffset="250" stroke-linecap="round"/><defs><linearGradient id="progGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#F96907"/><stop offset="100%" stop-color="#FB8B3C"/></linearGradient></defs></svg>
+            <div class="relative -mt-[75px] mb-[40px]"><span class="font-display font-bold text-2xl" id="dashPercent">23%</span><br><span class="text-xs text-surface-300">Complete</span></div>
+          </div>
+          <div class="glass rounded-xl p-5"><div class="flex items-center gap-2 mb-3"><i class="fas fa-robot text-brand-400 text-sm"></i><span class="text-sm font-semibold">AI Band Prediction</span></div><div class="grid grid-cols-2 gap-3"><div class="text-center p-2 rounded-lg bg-surface-800/50"><div class="font-display font-bold text-lg text-brand-400">6.5</div><div class="text-xs text-surface-300">Reading</div></div><div class="text-center p-2 rounded-lg bg-surface-800/50"><div class="font-display font-bold text-lg text-yellow-400">5.5</div><div class="text-xs text-surface-300">Listening</div></div><div class="text-center p-2 rounded-lg bg-surface-800/50"><div class="font-display font-bold text-lg text-green-400">6.0</div><div class="text-xs text-surface-300">Writing</div></div><div class="text-center p-2 rounded-lg bg-surface-800/50"><div class="font-display font-bold text-lg text-red-400">5.0</div><div class="text-xs text-surface-300">Speaking</div></div></div><div class="mt-3 text-center p-2 rounded-lg bg-brand-500/10 border border-brand-500/20"><span class="text-xs text-surface-200">Overall: </span><span class="font-display font-bold text-brand-400">6.0</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="relative py-24 px-4">
+  <div class="noise-overlay"></div>
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Simple Pricing</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Start Free, <span class="text-brand-400">Go Premium</span></h2>
+      <div class="flex items-center justify-center gap-3 mt-6">
+        <span id="monthlyLabel" class="text-sm font-medium text-white">Monthly</span>
+        <button id="billingToggle" onclick="toggleBilling()" class="w-14 h-7 rounded-full bg-surface-500 relative transition-all" aria-label="Toggle billing"><div id="billingDot" class="w-5 h-5 rounded-full bg-brand-500 absolute top-1 left-1 transition-all"></div></button>
+        <span id="yearlyLabel" class="text-sm font-medium text-surface-300">Yearly <span class="text-green-400 text-xs font-semibold">-40%</span></span>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <div class="gradient-border rounded-2xl p-8">
+        <div class="text-sm font-semibold text-surface-200 mb-1">Free</div><div class="font-display font-bold text-4xl mb-1">$0</div><div class="text-xs text-surface-300 mb-6">Forever free</div>
+        <ul class="space-y-3 mb-8"><li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-400 text-xs"></i>Limited practice</li><li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-400 text-xs"></i>Basic vocabulary</li><li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-400 text-xs"></i>1 mini mock/week</li><li class="flex items-center gap-2 text-sm text-surface-300"><i class="fas fa-times text-surface-400 text-xs"></i>AI evaluation</li><li class="flex items-center gap-2 text-sm text-surface-300"><i class="fas fa-times text-surface-400 text-xs"></i>Full mock tests</li></ul>
+        <button onclick="handleStartFree()" class="w-full glass hover:bg-white/[0.08] rounded-xl py-3 text-sm font-semibold transition">Get Started Free</button>
+      </div>
+      <div class="relative gradient-border rounded-2xl p-8 glow-accent">
+        <div class="absolute -top-3 right-6 bg-brand-500 text-white text-xs font-semibold px-4 py-1 rounded-full">Recommended</div>
+        <div class="text-sm font-semibold text-brand-400 mb-1">Premium</div><div class="font-display font-bold text-4xl mb-1" id="priceDisplay">$19</div><div class="text-xs text-surface-300 mb-6" id="pricePeriod">per month</div>
+        <ul class="space-y-3 mb-8"><li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-400 text-xs"></i>Unlimited practice</li><li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-400 text-xs"></i>Full vocabulary</li><li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-400 text-xs"></i>Unlimited mock tests</li><li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-brand-400 text-xs"></i>AI Speaking + Writing</li><li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-brand-400 text-xs"></i>Advanced analytics</li></ul>
+        <button onclick="handleStartFree()" class="w-full bg-brand-500 hover:bg-brand-600 text-white rounded-xl py-3 text-sm font-semibold transition hover:shadow-lg hover:shadow-brand-500/25">Start 7-Day Free Trial</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative py-24 px-4">
+  <div class="noise-overlay"></div>
+  <div class="absolute inset-0 overflow-hidden"><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-15 blur-3xl" style="background:radial-gradient(circle,var(--accent) 0%,transparent 70%)"></div></div>
+  <div class="max-w-3xl mx-auto relative z-10 text-center">
+    <div class="fire-flicker text-5xl mb-6">🔥</div>
+    <h2 class="font-display text-4xl sm:text-5xl font-bold mb-4">Your IELTS Journey<br>Starts <span class="text-brand-400">Today</span></h2>
+    <p class="text-surface-200 text-lg mb-8 max-w-lg mx-auto">Join 47,850+ students who cracked IELTS with BandBoost 30.</p>
+    <button onclick="handleStartFree()" class="group bg-brand-500 hover:bg-brand-600 text-white font-semibold px-10 py-4 rounded-2xl text-lg transition-all hover:shadow-xl hover:shadow-brand-500/30">Start Free Now <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i></button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative py-16 px-4 border-t border-white/5">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2"><div class="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-400 flex items-center justify-center"><i class="fas fa-bolt text-white text-sm"></i></div><span class="font-display font-bold text-lg">BandBoost <span class="text-brand-500">30</span></span></div>
+      <p class="text-xs text-surface-300">&copy; 2025 BandBoost 30. All rights reserved.</p>
+      <div class="flex items-center gap-3">
+        <a href="#" class="w-9 h-9 glass rounded-lg flex items-center justify-center hover:bg-white/[0.08] transition" aria-label="Facebook"><i class="fab fa-facebook-f text-surface-200 text-sm"></i></a>
+        <a href="#" class="w-9 h-9 glass rounded-lg flex items-center justify-center hover:bg-white/[0.08] transition" aria-label="Twitter"><i class="fab fa-twitter text-surface-200 text-sm"></i></a>
+        <a href="#" class="w-9 h-9 glass rounded-lg flex items-center justify-center hover:bg-white/[0.08] transition" aria-label="YouTube"><i class="fab fa-youtube text-surface-200 text-sm"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ==================== DATA ====================
+const roadmapData = {
+  1: { title:'Week 1 — Foundation', days: [
+    {day:1,title:'IELTS Overview',tasks:['Exam pattern & structure','Scoring system','Diagnostic test'],icon:'fa-compass'},
+    {day:2,title:'Basic Grammar',tasks:['Tenses review','Subject-verb agreement','Common grammar traps'],icon:'fa-spell-check'},
+    {day:3,title:'Vocabulary Basics',tasks:['High-frequency words','Synonyms & antonyms','Context clues'],icon:'fa-font'},
+    {day:4,title:'Listening Basics',tasks:['Section 1 format','Number spelling','Keyword listening'],icon:'fa-headphones'},
+    {day:5,title:'Reading Skimming',tasks:['Skimming techniques','Scanning details','1 practice passage'],icon:'fa-book-open'},
+    {day:6,title:'Writing Task 1',tasks:['Chart types overview','Key features','Sample analysis'],icon:'fa-chart-bar'},
+    {day:7,title:'Speaking Intro',tasks:['Part 1 practice','Common topics','Self-recording'],icon:'fa-microphone'},
+  ]},
+  2: { title:'Week 2 — Skill Building', days: [
+    {day:8,title:'Speed Reading',tasks:['Timed passage drill','Matching headings','Vocab from context'],icon:'fa-bolt'},
+    {day:9,title:'Listening 2-3',tasks:['Multi-speaker practice','Note completion','Speed control'],icon:'fa-volume-up'},
+    {day:10,title:'Writing Task 1',tasks:['Line graph description','Comparison language','Timed writing'],icon:'fa-pen'},
+    {day:11,title:'Speaking Cue Cards',tasks:['5 cue card practices','2-minute drills','Fluency tips'],icon:'fa-comment-dots'},
+    {day:12,title:'Grammar Deep Dive',tasks:['Complex sentences','Relative clauses','Conditionals'],icon:'fa-code'},
+    {day:13,title:'Mini Mock 1',tasks:['Reading + Listening','Timed conditions','Score analysis'],icon:'fa-stopwatch'},
+    {day:14,title:'Vocab Expansion',tasks:['Academic word list','Collocations','Quiz battle'],icon:'fa-brain'},
+  ]},
+  3: { title:'Week 3 — Advanced', days: [
+    {day:15,title:'Advanced Reading',tasks:['T/F/NG mastery','Difficult passages','Time management'],icon:'fa-graduation-cap'},
+    {day:16,title:'Listening Section 4',tasks:['Lecture listening','Complex notes','Accent practice'],icon:'fa-assistive-listening-systems'},
+    {day:17,title:'Writing Task 2',tasks:['Essay structure','Argument essays','AI evaluation'],icon:'fa-pen-fancy'},
+    {day:18,title:'Speaking Confidence',tasks:['Part 3 discussion','Abstract topics','Filler elimination'],icon:'fa-microphone-alt'},
+    {day:19,title:'Error Analysis',tasks:['Review mistakes','Pattern ID','Targeted plan'],icon:'fa-search'},
+    {day:20,title:'Mini Mock 2',tasks:['Writing + Speaking','AI score prediction','Weakness report'],icon:'fa-chart-pie'},
+    {day:21,title:'Mid Review',tasks:['Progress check','Band prediction','Plan adjustment'],icon:'fa-sync'},
+  ]},
+  4: { title:'Week 4 — Exam Mode', days: [
+    {day:22,title:'Full Mock 1',tasks:['All 4 sections','Real timer (2h 45m)','AI analysis'],icon:'fa-file-alt'},
+    {day:23,title:'Weakness Fix',tasks:['Targeted drills','Error correction','Impromptu speaking'],icon:'fa-bullseye'},
+    {day:24,title:'Full Mock 2',tasks:['Full simulation','Score comparison','Improvement check'],icon:'fa-file-alt'},
+    {day:25,title:'Speed & Accuracy',tasks:['Timed sprint','Accuracy drill','Speed writing'],icon:'fa-tachometer-alt'},
+    {day:26,title:'Full Mock 3',tasks:['Final simulation','Readiness score','Strengths check'],icon:'fa-file-alt'},
+    {day:27,title:'Final Fix',tasks:['Last weak area practice','Confidence building','Strategies review'],icon:'fa-wrench'},
+    {day:28,title:'Exam Simulation',tasks:['Full mock under pressure','No breaks','Final AI assessment'],icon:'fa-trophy'},
+    {day:29,title:'Light Review',tasks:['Flashcard review','Key strategies recap','Relaxation'],icon:'fa-couch'},
+    {day:30,title:'Exam Ready!',tasks:['Confidence check','Quick tips review','Go ace it!'],icon:'fa-fire'},
+  ]}
+};
+
+const moduleData = {
+  reading: { title:'Reading Module', color:'brand', icon:'fa-book-open', features: [{icon:'fa-highlighter',title:'Text Highlighting',desc:'Highlight key parts for reference.'},{icon:'fa-stopwatch',title:'Built-in Timer',desc:'Timed passages for speed building.'},{icon:'fa-check-double',title:'Instant Answers',desc:'Immediate feedback with explanations.'},{icon:'fa-language',title:'Vocabulary Popup',desc:'Tap any word for meaning and pronunciation.'}], extras:['Passage difficulty selector','Question type filters','Progress tracking','AI speed analysis'] },
+  listening: { title:'Listening Module', color:'green', icon:'fa-headphones', features: [{icon:'fa-play-circle',title:'Audio Player',desc:'Professional recordings with clear controls.'},{icon:'fa-tachometer-alt',title:'Speed Control',desc:'Practice at 0.75x, 1x, or 1.25x speed.'},{icon:'fa-globe',title:'Accent Practice',desc:'UK, Australian, and North American accents.'},{icon:'fa-keyboard',title:'Dictation Mode',desc:'AI-powered dictation for spelling.'}], extras:['Section-wise practice','Note completion','Multiple choice mastery','AI score prediction'] },
+  writing: { title:'Writing Module', color:'blue', icon:'fa-pen-nib', features: [{icon:'fa-chart-line',title:'Task 1: Charts',desc:'Practice describing visual data.'},{icon:'fa-paragraph',title:'Task 2: Essays',desc:'Argument, discussion, problem-solution.'},{icon:'fa-spell-check',title:'Grammar Correction',desc:'AI detects and corrects errors.'},{icon:'fa-link',title:'Coherence Check',desc:'Paragraph flow and linking analysis.'}], extras:['Band prediction','Lexical resource scoring','Sample comparison','Timed writing'] },
+  speaking: { title:'Speaking Module', color:'purple', icon:'fa-microphone', features: [{icon:'fa-microphone-alt',title:'Voice Recording',desc:'Record and play back responses.'},{icon:'fa-clone',title:'Cue Card Practice',desc:'Extensive cue card library.'},{icon:'fa-comments',title:'Follow-up Questions',desc:'AI-generated Part 3 questions.'},{icon:'fa-waveform',title:'Pronunciation Score',desc:'AI rates pronunciation clarity.'}], extras:['Fluency analysis','Filler word detection','Vocabulary range scoring','Native comparison'] }
+};
+
+// ==================== AUTH SYSTEM ====================
+
+// Check if user is logged in on page load
+function checkAuthState() {
+  const user = JSON.parse(localStorage.getItem('bb_user') || 'null');
+  if (user && user.loggedIn) {
+    showLoggedInState(user);
+  } else {
+    showLoggedOutState();
+  }
+}
+
+function showLoggedInState(user) {
+  document.getElementById('navAuthBtns').classList.add('hidden');
+  document.getElementById('navUserMenu').classList.remove('hidden');
+  document.getElementById('navUserMenu').classList.add('flex');
+  document.getElementById('navAvatar').textContent = (user.name || 'U').charAt(0).toUpperCase();
+  document.getElementById('navName').textContent = user.name || 'User';
+  document.getElementById('navStreak').textContent = user.streak || 7;
+  document.getElementById('dropdownName').textContent = user.name || 'User';
+  document.getElementById('dropdownEmail').textContent = user.email || '';
+  // Dashboard
+  document.getElementById('dashLocked').classList.add('hidden');
+  document.getElementById('dashActive').classList.remove('hidden');
+  document.getElementById('dashStreak').textContent = user.streak || 7;
+  document.getElementById('dashDayInfo').textContent = `Day ${user.day || 7} of 30 — ${user.weak ? user.weak.charAt(0).toUpperCase()+user.weak.slice(1)+' Focus' : 'Speaking Introduction'}`;
+}
+
+function showLoggedOutState() {
+  document.getElementById('navAuthBtns').classList.remove('hidden');
+  document.getElementById('navUserMenu').classList.add('hidden');
+  document.getElementById('navUserMenu').classList.remove('flex');
+  document.getElementById('dashLocked').classList.remove('hidden');
+  document.getElementById('dashActive').classList.add('hidden');
+}
+
+function handleLogin() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  let valid = true;
+
+  // Validate email
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('loginEmail').classList.add('input-error');
+    document.getElementById('loginEmailErr').style.display = 'block';
+    valid = false;
+  } else {
+    document.getElementById('loginEmail').classList.remove('input-error');
+    document.getElementById('loginEmailErr').style.display = 'none';
+  }
+
+  // Validate password
+  if (!pass || pass.length < 6) {
+    document.getElementById('loginPass').classList.add('input-error');
+    document.getElementById('loginPassErr').style.display = 'block';
+    valid = false;
+  } else {
+    document.getElementById('loginPass').classList.remove('input-error');
+    document.getElementById('loginPassErr').style.display = 'none';
+  }
+
+  if (!valid) return;
+
+  // Check if user exists in localStorage
+  const storedUsers = JSON.parse(localStorage.getItem('bb_users') || '[]');
+  const found = storedUsers.find(u => u.email === email);
+
+  if (found) {
+    if (found.password !== pass) {
+      document.getElementById('loginPass').classList.add('input-error');
+      document.getElementById('loginPassErr').textContent = 'Incorrect password';
+      document.getElementById('loginPassErr').style.display = 'block';
+      return;
+    }
+    found.loggedIn = true;
+    localStorage.setItem('bb_user', JSON.stringify(found));
+    closeModal('authModal');
+    showLoggedInState(found);
+    showToast(`Welcome back, ${found.name}!`);
+  } else {
+    // User not found — prompt signup
+    document.getElementById('loginEmail').classList.add('input-error');
+    document.getElementById('loginEmailErr').textContent = 'No account found. Please sign up first.';
+    document.getElementById('loginEmailErr').style.display = 'block';
+  }
+}
+
+function handleSignup() {
+  const name = document.getElementById('signupName').value.trim();
+  const email = document.getElementById('signupEmail').value.trim();
+  const pass = document.getElementById('signupPass').value;
+  const passConfirm = document.getElementById('signupPassConfirm').value;
+  let valid = true;
+
+  if (!name) {
+    document.getElementById('signupName').classList.add('input-error');
+    document.getElementById('signupNameErr').style.display = 'block';
+    valid = false;
+  } else {
+    document.getElementById('signupName').classList.remove('input-error');
+    document.getElementById('signupNameErr').style.display = 'none';
+  }
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('signupEmail').classList.add('input-error');
+    document.getElementById('signupEmailErr').style.display = 'block';
+    valid = false;
+  } else {
+    document.getElementById('signupEmail').classList.remove('input-error');
+    document.getElementById('signupEmailErr').style.display = 'none';
+  }
+
+  if (!pass || pass.length < 6) {
+    document.getElementById('signupPass').classList.add('input-error');
+    document.getElementById('signupPassErr').style.display = 'block';
+    valid = false;
+  } else {
+    document.getElementById('signupPass').classList.remove('input-error');
+    document.getElementById('signupPassErr').style.display = 'none';
+  }
+
+  if (pass !== passConfirm) {
+    document.getElementById('signupPassConfirm').classList.add('input-error');
+    document.getElementById('signupPassConfirmErr').style.display = 'block';
+    valid = false;
+  } else {
+    document.getElementById('signupPassConfirm').classList.remove('input-error');
+    document.getElementById('signupPassConfirmErr').style.display = 'none';
+  }
+
+  if (!valid) return;
+
+  // Check if email already exists
+  const storedUsers = JSON.parse(localStorage.getItem('bb_users') || '[]');
+  if (storedUsers.find(u => u.email === email)) {
+    document.getElementById('signupEmail').classList.add('input-error');
+    document.getElementById('signupEmailErr').textContent = 'This email is already registered. Try logging in.';
+    document.getElementById('signupEmailErr').style.display = 'block';
+    return;
+  }
+
+  // Create user
+  const newUser = {
+    name, email, password: pass,
+    loggedIn: true,
+    level: '', target: '', examDate: '', weak: '', hours: '',
+    streak: 0, xp: 0, day: 1,
+    onboarded: false,
+    createdAt: new Date().toISOString()
+  };
+  storedUsers.push(newUser);
+  localStorage.setItem('bb_users', JSON.stringify(storedUsers));
+  localStorage.setItem('bb_user', JSON.stringify(newUser));
+
+  closeModal('authModal');
+  showToast(`Welcome, ${name}! Let's set up your plan.`);
+  // Open onboarding
+  setTimeout(() => openModal('onboardingModal'), 500);
+}
+
+function socialLogin(provider) {
+  const provName = provider === 'google' ? 'Google' : 'Facebook';
+  const fakeEmail = `user_${Date.now()}@${provider}.com`;
+  const fakeName = `${provName} User`;
+
+  const newUser = {
+    name: fakeName, email: fakeEmail, password: 'social_auth',
+    loggedIn: true,
+    level: '', target: '', examDate: '', weak: '', hours: '',
+    streak: 0, xp: 0, day: 1,
+    onboarded: false,
+    createdAt: new Date().toISOString()
+  };
+
+  const storedUsers = JSON.parse(localStorage.getItem('bb_users') || '[]');
+  storedUsers.push(newUser);
+  localStorage.setItem('bb_users', JSON.stringify(storedUsers));
+  localStorage.setItem('bb_user', JSON.stringify(newUser));
+
+  closeModal('authModal');
+  showToast(`Signed in with ${provName}!`);
+  setTimeout(() => openModal('onboardingModal'), 500);
+}
+
+function logoutUser() {
+  const user = JSON.parse(localStorage.getItem('bb_user') || 'null');
+  if (user) {
+    user.loggedIn = false;
+    localStorage.setItem('bb_user', JSON.stringify(user));
+  }
+  localStorage.removeItem('bb_user');
+  showLoggedOutState();
+  toggleUserDropdown();
+  showToast('Logged out successfully.');
+}
+
+// ==================== ONBOARDING ====================
+
+let onboardData = { level: '', target: '', examDate: '', weak: '', hours: '' };
+
+function selectOnboardOpt(btn) {
+  const group = btn.dataset.group;
+  const val = btn.dataset.val;
+  // Deselect siblings in same group
+  btn.parentElement.querySelectorAll('.onboard-opt').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  onboardData[group] = val;
+}
+
+function nextOnboardStep(step) {
+  if (step === 2) {
+    // Validate step 1
+    if (!onboardData.level) { document.getElementById('levelErr').style.display='block'; return; }
+    else document.getElementById('levelErr').style.display='none';
+    if (!onboardData.target) { document.getElementById('targetErr').style.display='block'; return; }
+    else document.getElementById('targetErr').style.display='none';
+  }
+  if (step === 3) {
+    // Validate step 2
+    if (!document.getElementById('examDate').value) { document.getElementById('examDateErr').style.display='block'; return; }
+    else document.getElementById('examDateErr').style.display='none';
+    onboardData.examDate = document.getElementById('examDate').value;
+    if (!onboardData.weak) { document.getElementById('weakErr').style.display='block'; return; }
+    else document.getElementById('weakErr').style.display='none';
+    if (!onboardData.hours) onboardData.hours = '2'; // default
+
+    // Fill summary
+    document.getElementById('sumLevel').textContent = onboardData.level.charAt(0).toUpperCase() + onboardData.level.slice(1);
+    document.getElementById('sumTarget').textContent = onboardData.target;
+    document.getElementById('sumDate').textContent = onboardData.examDate;
+    document.getElementById('sumWeak').textContent = onboardData.weak.charAt(0).toUpperCase() + onboardData.weak.slice(1);
+    document.getElementById('sumHours').textContent = onboardData.hours + (onboardData.hours === '1' ? ' hour/day' : ' hours/day');
+  }
+
+  // Update step dots
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById('stepDot' + i);
+    dot.classList.remove('active', 'done');
+    if (i < step) dot.classList.add('done');
+    if (i === step) dot.classList.add('active');
+  }
+
+  document.getElementById('onboardStep1').classList.add('hidden');
+  document.getElementById('onboardStep2').classList.add('hidden');
+  document.getElementById('onboardStep3').classList.add('hidden');
+  document.getElementById('onboardStep' + step).classList.remove('hidden');
+}
+
+function prevOnboardStep(step) {
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById('stepDot' + i);
+    dot.classList.remove('active', 'done');
+    if (i < step) dot.classList.add('done');
+    if (i === step) dot.classList.add('active');
+  }
+  document.getElementById('onboardStep1').classList.add('hidden');
+  document.getElementById('onboardStep2').classList.add('hidden');
+  document.getElementById('onboardStep3').classList.add('hidden');
+  document.getElementById('onboardStep' + step).classList.remove('hidden');
+}
+
+function finishOnboarding() {
+  const user = JSON.parse(localStorage.getItem('bb_user') || 'null');
+  if (user) {
+    user.level = onboardData.level;
+    user.target = onboardData.target;
+    user.examDate = onboardData.examDate;
+    user.weak = onboardData.weak;
+    user.hours = onboardData.hours;
+    user.onboarded = true;
+    user.streak = 1;
+    user.xp = 0;
+    user.day = 1;
+    localStorage.setItem('bb_user', JSON.stringify(user));
+    // Also update in users array
+    const users = JSON.parse(localStorage.getItem('bb_users') || '[]');
+    const idx = users.findIndex(u => u.email === user.email);
+    if (idx >= 0) { users[idx] = user; localStorage.setItem('bb_users', JSON.stringify(users)); }
+    showLoggedInState(user);
+  }
+  closeModal('onboardingModal');
+  showToast('Your AI roadmap is ready! Let\'s start Day 1.');
+  // Scroll to dashboard
+  setTimeout(() => document.getElementById('dashboard').scrollIntoView({behavior:'smooth'}), 300);
+}
+
+// ==================== PROFILE ====================
+
+function updateProfile() {
+  const user = JSON.parse(localStorage.getItem('bb_user') || 'null');
+  if (!user) return;
+  const newName = document.getElementById('profileNameInput').value.trim();
+  if (newName) user.name = newName;
+  localStorage.setItem('bb_user', JSON.stringify(user));
+  const users = JSON.parse(localStorage.getItem('bb_users') || '[]');
+  const idx = users.findIndex(u => u.email === user.email);
+  if (idx >= 0) { users[idx] = user; localStorage.setItem('bb_users', JSON.stringify(users)); }
+  showLoggedInState(user);
+  closeModal('profileModal');
+  showToast('Profile updated!');
+}
+
+// ==================== UI HELPERS ====================
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function switchAuthTab(tab) {
+  const lt = document.getElementById('loginTab'), st = document.getElementById('signupTab');
+  const lf = document.getElementById('loginForm'), sf = document.getElementById('signupForm');
+  if (tab === 'login') {
+    lt.classList.add('border-brand-500','text-white'); lt.classList.remove('border-transparent','text-surface-300');
+    st.classList.remove('border-brand-500','text-white'); st.classList.add('border-transparent','text-surface-300');
+    lf.classList.remove('hidden'); sf.classList.add('hidden');
+  } else {
+    st.classList.add('border-brand-500','text-white'); st.classList.remove('border-transparent','text-surface-300');
+    lt.classList.remove('border-brand-500','text-white'); lt.classList.add('border-transparent','text-surface-300');
+    sf.classList.remove('hidden'); lf.classList.add('hidden');
+  }
+  // Clear errors
+  document.querySelectorAll('.input-error').forEach(i => i.classList.remove('input-error'));
+  document.querySelectorAll('.error-msg').forEach(e => e.style.display = 'none');
+}
+
+function togglePassVis(inputId, btn) {
+  const inp = document.getElementById(inputId);
+  const icon = btn.querySelector('i');
+  if (inp.type === 'password') { inp.type = 'text'; icon.classList.replace('fa-eye','fa-eye-slash'); }
+  else { inp.type = 'password'; icon.classList.replace('fa-eye-slash','fa-eye'); }
+}
+
+function toggleUserDropdown() {
+  document.getElementById('userDropdown').classList.toggle('hidden');
+}
+
+// Close dropdown on outside click
+document.addEventListener('click', (e) => {
+  const dd = document.getElementById('userDropdown');
+  const btn = document.getElementById('navUserBtn');
+  if (!dd.contains(e.target) && !btn.contains(e.target)) dd.classList.add('hidden');
+});
+
+function handleStartFree() {
+  const user = JSON.parse(localStorage.getItem('bb_user') || 'null');
+  if (user && user.loggedIn) {
+    document.getElementById('dashboard').scrollIntoView({behavior:'smooth'});
+  } else {
+    openModal('authModal');
+    switchAuthTab('signup');
+  }
+}
+
+// Password strength
+document.addEventListener('DOMContentLoaded', () => {
+  const passInput = document.getElementById('signupPass');
+  if (passInput) {
+    passInput.addEventListener('input', function() {
+      const v = this.value;
+      let score = 0;
+      if (v.length >= 6) score++;
+      if (v.length >= 10) score++;
+      if (/[A-Z]/.test(v) && /[a-z]/.test(v)) score++;
+      if (/[0-9]/.test(v) && /[^A-Za-z0-9]/.test(v)) score++;
+      const colors = ['#EF4444','#FBBF24','#22C55E','#22C55E'];
+      const labels = ['Weak','Fair','Good','Strong'];
+      for (let i = 1; i <= 4; i++) {
+        const bar = document.getElementById('str'+i);
+        bar.style.background = i <= score ? colors[Math.min(score-1,3)] : 'rgba(255,255,255,0.06)';
+      }
+      document.getElementById('passStrengthText').textContent = score > 0 ? labels[score-1] : '';
+      document.getElementById('passStrengthText').style.color = score > 0 ? colors[score-1] : '';
+    });
+  }
+});
+
+// Band slider
+function updateBandSlider(el) {
+  const val = ((el.value - 4) / 5) * 100;
+  el.style.setProperty('--val', val + '%');
+  document.getElementById('bandValue').textContent = parseFloat(el.value).toFixed(1);
+}
+
+// Billing toggle
+let isYearly = false;
+function toggleBilling() {
+  isYearly = !isYearly;
+  const dot = document.getElementById('billingDot');
+  const ml = document.getElementById('monthlyLabel'), yl = document.getElementById('yearlyLabel');
+  const price = document.getElementById('priceDisplay'), period = document.getElementById('pricePeriod');
+  if (isYearly) {
+    dot.style.left = 'calc(100% - 24px)';
+    ml.classList.remove('text-white'); ml.classList.add('text-surface-300');
+    yl.classList.remove('text-surface-300'); yl.classList.add('text-white');
+    price.textContent = '$11'; period.textContent = 'per month (billed yearly)';
+  } else {
+    dot.style.left = '4px';
+    yl.classList.remove('text-white'); yl.classList.add('text-surface-300');
+    ml.classList.remove('text-surface-300'); ml.classList.add('text-white');
+    price.textContent = '$19'; period.textContent = 'per month';
+  }
+}
+
+// Task toggle
+function toggleTask(el) {
+  const check = el.querySelector('.task-check');
+  if (!check) return;
+  check.classList.add('border-green-500','bg-green-500/20');
+  check.innerHTML = '<i class="fas fa-check text-green-400 text-xs"></i>';
+  check.classList.remove('task-check');
+  const text = el.querySelector('span.text-sm');
+  text.classList.add('line-through','text-surface-300');
+  const user = JSON.parse(localStorage.getItem('bb_user') || 'null');
+  if (user) {
+    user.xp = (user.xp || 0) + 25;
+    localStorage.setItem('bb_user', JSON.stringify(user));
+    showToast('Task completed! +25 XP earned.');
+  }
+}
+
+// 30-Day Roadmap
+function showWeek(week) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', parseInt(b.dataset.week) === week));
+  renderWeek(week);
+}
+function renderWeek(week) {
+  const container = document.getElementById('weekContainer');
+  const data = roadmapData[week];
+  container.innerHTML = '';
+  const user = JSON.parse(localStorage.getItem('bb_user') || 'null');
+  const userDay = user && user.loggedIn ? (user.day || 1) : 7;
+  data.days.forEach((d, i) => {
+    const isCompleted = d.day < userDay;
+    const isToday = d.day === userDay;
+    const isLocked = d.day > userDay + 1;
+    let statusClass = isCompleted ? 'completed' : (isToday ? 'today' : (isLocked ? 'locked' : ''));
+    const card = document.createElement('div');
+    card.className = `day-cell glass rounded-2xl p-4 border border-transparent ${statusClass}`;
+    card.innerHTML = `
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-xs font-semibold ${isCompleted?'text-green-400':(isToday?'text-brand-400':'text-surface-300')}">Day ${d.day}</span>
+        ${isCompleted?'<i class="fas fa-check-circle text-green-400 text-sm"></i>':(isToday?'<span class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>':(isLocked?'<i class="fas fa-lock text-surface-400 text-xs"></i>':''))}
+      </div>
+      <div class="w-10 h-10 rounded-xl ${isCompleted?'bg-green-500/15':(isToday?'bg-brand-500/15':'bg-surface-500')} flex items-center justify-center mb-3">
+        <i class="fas ${d.icon} ${isCompleted?'text-green-400':(isToday?'text-brand-400':'text-surface-300')} text-sm"></i>
+      </div>
+      <h4 class="font-medium text-sm mb-1 ${isLocked?'text-surface-300':''}">${d.title}</h4>
+      <p class="text-xs text-surface-300">${d.tasks.length} tasks</p>`;
+    if (!isLocked) card.onclick = () => showDayDetail(d);
+    container.appendChild(card);
+  });
+}
+function showDayDetail(d) {
+  document.getElementById('dayDetail').classList.remove('hidden');
+  document.getElementById('dayDetailTitle').textContent = `Day ${d.day}: ${d.title}`;
+  document.getElementById('dayDetailContent').innerHTML = d.tasks.map((t,i) => `
+    <div class="flex items-center gap-3 glass rounded-xl p-3">
+      <div class="w-6 h-6 rounded-full border border-surface-300 flex items-center justify-center flex-shrink-0 text-xs font-bold">${i+1}</div>
+      <span class="text-sm">${t}</span>
+    </div>`).join('');
+  document.getElementById('dayDetail').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// Modules
+function showModule(mod) {
+  document.querySelectorAll('.module-tab').forEach(b => b.classList.toggle('active', b.dataset.mod === mod));
+  renderModule(mod);
+}
+function renderModule(mod) {
+  const d = moduleData[mod]; const c = d.color; const container = document.getElementById('moduleContent');
+  container.innerHTML = `
+    <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-${c}-500/15 flex items-center justify-center"><i class="fas ${d.icon} text-${c}-400 text-xl"></i></div><h3 class="font-display font-bold text-2xl">${d.title}</h3></div>
+    <div class="grid sm:grid-cols-2 gap-4 mb-6">${d.features.map(f=>`
+      <div class="glass rounded-xl p-4 flex gap-3"><div class="w-10 h-10 rounded-lg bg-${c}-500/10 flex items-center justify-center flex-shrink-0"><i class="fas ${f.icon} text-${c}-400 text-sm"></i></div><div><h4 class="font-medium text-sm mb-1">${f.title}</h4><p class="text-xs text-surface-200 leading-relaxed">${f.desc}</p></div></div>`).join('')}</div>
+    <div class="glass rounded-xl p-4"><h4 class="font-medium text-sm mb-3 text-${c}-400">Extra Features</h4><div class="flex flex-wrap gap-2">${d.extras.map(e=>`<span class="text-xs glass rounded-full px-3 py-1.5 text-surface-200">${e}</span>`).join('')}</div></div>`;
+}
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('.counter').forEach(counter => {
+    const target = parseInt(counter.dataset.target); const duration = 2000; const start = performance.now();
+    function update(now) {
+      const elapsed = now - start; const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = Math.floor(eased * target).toLocaleString();
+      if (progress < 1) requestAnimationFrame(update);
+      else counter.textContent = target.toLocaleString() + '+';
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// Scroll animations
+function setupScrollAnimations() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.slide-up').forEach(el => observer.observe(el));
+}
+
+// Hero canvas
+function initHeroCanvas() {
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [], mouseX = 0, mouseY = 0;
+  function resize() { canvas.width = canvas.parentElement.offsetWidth; canvas.height = canvas.parentElement.offsetHeight; }
+  resize(); window.addEventListener('resize', resize);
+  canvas.parentElement.addEventListener('mousemove', e => {
+    const r = canvas.getBoundingClientRect(); mouseX = e.clientX - r.left; mouseY = e.clientY - r.top;
+  });
+  for (let i = 0; i < 50; i++) {
+    particles.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, vx:(Math.random()-0.5)*0.4, vy:(Math.random()-0.5)*0.4, size: Math.random()*2+0.5, opacity: Math.random()*0.4+0.1 });
+  }
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x<0)p.x=canvas.width; if(p.x>canvas.width)p.x=0; if(p.y<0)p.y=canvas.height; if(p.y>canvas.height)p.y=0;
+      const dx=mouseX-p.x, dy=mouseY-p.y, dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<150){p.vx-=dx*0.00005;p.vy-=dy*0.00005;}
+      ctx.beginPath(); ctx.arc(p.x,p.y,Math.max(0.5,p.size),0,Math.PI*2); ctx.fillStyle=`rgba(249,105,7,${p.opacity})`; ctx.fill();
+    });
+    for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){
+      const dx=particles[i].x-particles[j]..x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(249,105,7,${0.08*(1-dist/120)})`;ctx.lineWidth=0.5;ctx.stroke();}
+    }}
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// Mobile menu
+document.getElementById('mobileMenuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('hidden'));
+document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden')));
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.background = window.scrollY > 100 ? 'rgba(8,8,15,0.95)' : 'rgba(8,8,15,0.85)';
+});
+
+// ==================== INIT ====================
+document.addEventListener('DOMContentLoaded', () => {
+  initHeroCanvas();
+  showWeek(1);
+  renderModule('reading');
+  updateBandSlider(document.getElementById('bandSlider'));
+  setupScrollAnimations();
+  checkAuthState();
+
+  // Counter observer
+  const co = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ animateCounters(); co.disconnect(); } });
+  }, {threshold:0.3});
+  const hs = document.querySelector('#hero .grid');
+  if(hs) co.observe(hs);
+
+  // Populate profile modal if logged in
+  const user = JSON.parse(localStorage.getItem('bb_user') || 'null');
+  if (user && user.loggedIn) {
+    document.getElementById('profileNameInput').value = user.name || '';
+    document.getElementById('profileAvatar').textContent = (user.name||'U').charAt(0).toUpperCase();
+    document.getElementById('profileName').textContent = user.name;
+    document.getElementById('profileEmail').textContent = user.email;
+    document.getElementById('profStreak').textContent = user.streak || 0;
+    document.getElementById('profXP').textContent = user.xp || 0;
+    document.getElementById('profDay').textContent = user.day || 1;
+  }
+});
+</script>
+</body>
+</html>
