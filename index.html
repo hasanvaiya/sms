@@ -1,78 +1,1784 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anonymous SMS Sender</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a1a1a; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { background: #2d2d2d; padding: 25px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); width: 100%; max-width: 400px; border: 1px solid #444; }
-        h2 { text-align: center; color: #00d4ff; margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-size: 14px; }
-        input, textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #444; border-radius: 6px; background: #1a1a1a; color: white; box-sizing: border-box; }
-        button { width: 100%; padding: 12px; background: #00d4ff; border: none; border-radius: 6px; color: #1a1a1a; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        button:hover { background: #00a3cc; }
-        #status { margin-top: 15px; text-align: center; font-size: 14px; padding: 10px; border-radius: 4px; display: none; }
-        .success { background: #1b4332; color: #74c69d; }
-        .error { background: #5a1a1a; color: #ff8080; }
-    </style>
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BandBoost 30 — Crack IELTS in 30 Days</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['Space Grotesk', 'sans-serif'],
+        body: ['DM Sans', 'sans-serif'],
+      },
+      colors: {
+        brand: { 50:'#FFF4ED', 100:'#FFE6D5', 200:'#FECCAA', 300:'#FDA96F', 400:'#FB8B3C', 500:'#F96907', 600:'#E25A04', 700:'#B64506', 800:'#8D3709', 900:'#6F2E0B' },
+        surface: { 50:'#F0F0F5', 100:'#C4C4D0', 200:'#8888A0', 300:'#6B6B80', 400:'#3A3A50', 500:'#22222F', 600:'#1A1A26', 700:'#131320', 800:'#0E0E1A', 900:'#08080F' },
+      }
+    }
+  }
+}
+</script>
+<style>
+:root {
+  --bg: #08080f;
+  --bg-card: rgba(255,255,255,0.04);
+  --bg-card-hover: rgba(255,255,255,0.07);
+  --border: rgba(255,255,255,0.08);
+  --accent: #F96907;
+  --accent-light: #FB8B3C;
+  --accent-glow: rgba(249,105,7,0.25);
+  --success: #22C55E;
+  --warning: #FBBF24;
+  --info: #3B82F6;
+  --text: #F0F0F5;
+  --muted: #6B6B80;
+}
 
-<div class="container">
-    <h2>KAEVOR SMS</h2>
-    <label>Phone Number (with Country Code)</label>
-    <input type="text" id="phone" placeholder="+88017XXXXXXXX">
-    
-    <label>Message</label>
-    <textarea id="message" rows="4" placeholder="Type your message here..."></textarea>
-    
-    <button onclick="sendSMS()">Send Message</button>
-    
-    <div id="status"></div>
+* { box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Space Grotesk', sans-serif; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+/* Glass card */
+.glass { background: var(--bg-card); border: 1px solid var(--border); backdrop-filter: blur(12px); }
+.glass:hover { background: var(--bg-card-hover); }
+
+/* Glow accent */
+.glow-accent { box-shadow: 0 0 40px var(--accent-glow), 0 0 80px rgba(249,105,7,0.1); }
+.glow-text { text-shadow: 0 0 30px var(--accent-glow); }
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--accent), transparent 50%, var(--accent-light));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Hero canvas */
+#heroCanvas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+
+/* Pulse ring */
+@keyframes pulseRing {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.pulse-ring { animation: pulseRing 2s ease-out infinite; }
+
+/* Float */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.float { animation: float 4s ease-in-out infinite; }
+
+/* Streak fire */
+@keyframes fireFlicker {
+  0%,100% { transform: scaleY(1) scaleX(1); }
+  25% { transform: scaleY(1.1) scaleX(0.95); }
+  50% { transform: scaleY(0.95) scaleX(1.05); }
+  75% { transform: scaleY(1.05) scaleX(0.98); }
+}
+.fire-flicker { animation: fireFlicker 0.6s ease-in-out infinite; }
+
+/* Progress bar fill */
+@keyframes progressFill { from { width: 0; } }
+.progress-animate { animation: progressFill 1.5s ease-out forwards; }
+
+/* Slide up reveal */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.slide-up { opacity: 0; }
+.slide-up.visible { animation: slideUp 0.7s ease-out forwards; }
+
+/* Card tilt on hover */
+.tilt-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.tilt-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+/* Flashcard flip */
+.flashcard-inner {
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+  transform-style: preserve-3d;
+}
+.flashcard-inner.flipped { transform: rotateY(180deg); }
+.flashcard-front, .flashcard-back {
+  backface-visibility: hidden;
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; padding: 2rem;
+  border-radius: 16px;
+}
+.flashcard-back { transform: rotateY(180deg); }
+
+/* Nav active */
+.nav-link { position: relative; }
+.nav-link::after {
+  content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px;
+  background: var(--accent); transition: all 0.3s; transform: translateX(-50%);
+}
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+/* Tab active indicator */
+.tab-btn.active { color: var(--accent); border-color: var(--accent); }
+
+/* Toast */
+.toast {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  padding: 14px 24px; border-radius: 12px;
+  background: #1a1a26; border: 1px solid var(--border);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  transform: translateX(120%); transition: transform 0.4s ease;
+  font-size: 14px;
+}
+.toast.show { transform: translateX(0); }
+
+/* Badge shine */
+@keyframes badgeShine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.badge-shine {
+  background: linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: badgeShine 3s ease-in-out infinite;
+}
+
+/* Day cell */
+.day-cell { transition: all 0.3s ease; cursor: pointer; }
+.day-cell:hover { transform: scale(1.08); }
+.day-cell.completed { border-color: var(--success); background: rgba(34,197,94,0.1); }
+.day-cell.today { border-color: var(--accent); background: rgba(249,105,7,0.1); }
+.day-cell.locked { opacity: 0.35; cursor: not-allowed; }
+
+/* Custom range slider */
+input[type="range"] {
+  -webkit-appearance: none; width: 100%; height: 6px;
+  background: linear-gradient(to right, var(--accent) var(--val, 50%), rgba(255,255,255,0.1) var(--val, 50%));
+  border-radius: 3px; outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 22px; height: 22px;
+  background: var(--accent); border-radius: 50%; cursor: pointer;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+  display: none; align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+
+/* Section noise overlay */
+.noise-overlay {
+  position: absolute; inset: 0; opacity: 0.03; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- Toast container -->
+<div id="toast" class="toast"><i class="fas fa-check-circle text-green-400 mr-2"></i><span id="toastMsg"></span></div>
+
+<!-- NAVIGATION -->
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300" style="background:rgba(8,8,15,0.8);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.05);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="#" class="flex items-center gap-2">
+      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-400 flex items-center justify-center">
+        <i class="fas fa-bolt text-white text-sm"></i>
+      </div>
+      <span class="font-display font-bold text-lg tracking-tight">BandBoost <span class="text-brand-500">30</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#features" class="nav-link text-surface-200 hover:text-white transition">Features</a>
+      <a href="#roadmap" class="nav-link text-surface-200 hover:text-white transition">30-Day Plan</a>
+      <a href="#modules" class="nav-link text-surface-200 hover:text-white transition">Modules</a>
+      <a href="#dashboard" class="nav-link text-surface-200 hover:text-white transition">Dashboard</a>
+      <a href="#pricing" class="nav-link text-surface-200 hover:text-white transition">Pricing</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <button onclick="openModal('authModal')" class="hidden sm:block text-sm text-surface-200 hover:text-white transition px-4 py-2">Log In</button>
+      <button onclick="openModal('authModal')" class="text-sm font-semibold bg-brand-500 hover:bg-brand-600 text-white px-5 py-2.5 rounded-xl transition-all hover:shadow-lg hover:shadow-brand-500/25">Start Free</button>
+      <button id="mobileMenuBtn" class="md:hidden text-surface-200 hover:text-white p-2"><i class="fas fa-bars text-lg"></i></button>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 space-y-2">
+    <a href="#features" class="block py-2 text-surface-200 hover:text-white transition text-sm">Features</a>
+    <a href="#roadmap" class="block py-2 text-surface-200 hover:text-white transition text-sm">30-Day Plan</a>
+    <a href="#modules" class="block py-2 text-surface-200 hover:text-white transition text-sm">Modules</a>
+    <a href="#dashboard" class="block py-2 text-surface-200 hover:text-white transition text-sm">Dashboard</a>
+    <a href="#pricing" class="block py-2 text-surface-200 hover:text-white transition text-sm">Pricing</a>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+  <canvas id="heroCanvas"></canvas>
+  <div class="noise-overlay"></div>
+  <!-- Decorative orbs -->
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-20 blur-3xl" style="background:radial-gradient(circle, var(--accent) 0%, transparent 70%);"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-10 blur-3xl" style="background:radial-gradient(circle, #22C55E 0%, transparent 70%);"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-medium text-brand-400 mb-6 slide-up">
+      <span class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>
+      AI-Powered IELTS Preparation
+    </div>
+
+    <h1 class="font-display text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-6 slide-up" style="animation-delay:0.1s">
+      Crack IELTS in<br>
+      <span class="bg-gradient-to-r from-brand-400 via-brand-500 to-brand-300 bg-clip-text text-transparent glow-text">30 Days</span>
+    </h1>
+
+    <p class="text-surface-200 text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed slide-up" style="animation-delay:0.2s">
+      Structured daily roadmap, AI-powered practice, real mock tests, and smart analytics. From beginner to Band 7+ — one day at a time.
+    </p>
+
+    <!-- Band Selector -->
+    <div class="glass rounded-2xl p-6 max-w-md mx-auto mb-8 slide-up" style="animation-delay:0.3s">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-sm text-surface-200">Your Target Band</span>
+        <span id="bandValue" class="font-display font-bold text-2xl text-brand-400">7.0</span>
+      </div>
+      <input type="range" id="bandSlider" min="4" max="9" step="0.5" value="7" class="w-full" oninput="updateBandSlider(this)">
+      <div class="flex justify-between text-xs text-surface-300 mt-1">
+        <span>4.0</span><span>5.5</span><span>7.0</span><span>8.5</span><span>9.0</span>
+      </div>
+    </div>
+
+    <!-- CTA buttons -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 slide-up" style="animation-delay:0.4s">
+      <button onclick="openModal('authModal')" class="group relative bg-brand-500 hover:bg-brand-600 text-white font-semibold px-8 py-4 rounded-2xl text-base transition-all hover:shadow-xl hover:shadow-brand-500/30 hover:-translate-y-0.5">
+        Start Your 30-Day Sprint
+        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+      </button>
+      <a href="#roadmap" class="glass hover:bg-white/[0.08] text-surface-100 font-medium px-8 py-4 rounded-2xl text-base transition-all flex items-center gap-2">
+        <i class="fas fa-play-circle text-brand-400"></i>
+        See the Roadmap
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 gap-6 max-w-lg mx-auto slide-up" style="animation-delay:0.5s">
+      <div class="text-center">
+        <div class="font-display font-bold text-2xl sm:text-3xl text-white counter" data-target="47850">0</div>
+        <div class="text-xs text-surface-300 mt-1">Students Trained</div>
+      </div>
+      <div class="text-center">
+        <div class="font-display font-bold text-2xl sm:text-3xl text-brand-400">+1.8</div>
+        <div class="text-xs text-surface-300 mt-1">Avg Band Improvement</div>
+      </div>
+      <div class="text-center">
+        <div class="font-display font-bold text-2xl sm:text-3xl text-white counter" data-target="2340">0</div>
+        <div class="text-xs text-surface-300 mt-1">Daily Active Learners</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-surface-300 animate-bounce">
+    <span class="text-xs">Scroll to explore</span>
+    <i class="fas fa-chevron-down text-sm"></i>
+  </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section id="features" class="relative py-24 px-4">
+  <div class="noise-overlay"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Why BandBoost 30</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Everything You Need to<br><span class="text-brand-400">Ace IELTS</span></h2>
+      <p class="text-surface-200 max-w-xl mx-auto">Six powerful modules driven by AI, designed to take you from zero to exam-ready in exactly 30 days.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Feature 1 -->
+      <div class="gradient-border tilt-card rounded-2xl p-6 group">
+        <div class="w-12 h-12 rounded-xl bg-brand-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <i class="fas fa-microphone-alt text-brand-400 text-xl"></i>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">AI Speaking Coach</h3>
+        <p class="text-surface-200 text-sm leading-relaxed">Real-time pronunciation scoring, fluency analysis, filler word detection, and instant feedback on your speaking responses.</p>
+      </div>
+      <!-- Feature 2 -->
+      <div class="gradient-border tilt-card rounded-2xl p-6 group">
+        <div class="w-12 h-12 rounded-xl bg-green-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <i class="fas fa-pen-fancy text-green-400 text-xl"></i>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">AI Writing Evaluator</h3>
+        <p class="text-surface-200 text-sm leading-relaxed">Grammar correction, coherence check, lexical resource analysis, and band prediction for Task 1 and Task 2 essays.</p>
+      </div>
+      <!-- Feature 3 -->
+      <div class="gradient-border tilt-card rounded-2xl p-6 group">
+        <div class="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <i class="fas fa-clipboard-check text-blue-400 text-xl"></i>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Full Mock Tests</h3>
+        <p class="text-surface-200 text-sm leading-relaxed">Real exam conditions with timer, authentic difficulty, and AI-powered exam analyzer with strengths and weaknesses breakdown.</p>
+      </div>
+      <!-- Feature 4 -->
+      <div class="gradient-border tilt-card rounded-2xl p-6 group">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <i class="fas fa-calendar-check text-purple-400 text-xl"></i>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Smart Daily Planner</h3>
+        <p class="text-surface-200 text-sm leading-relaxed">AI adjusts your plan if you miss a day. Personalized tasks based on your weak areas and target band score.</p>
+      </div>
+      <!-- Feature 5 -->
+      <div class="gradient-border tilt-card rounded-2xl p-6 group">
+        <div class="w-12 h-12 rounded-xl bg-yellow-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <i class="fas fa-fire text-yellow-400 text-xl"></i>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Gamification & Streaks</h3>
+        <p class="text-surface-200 text-sm leading-relaxed">Earn XP, maintain streaks, unlock badges, and compete on leaderboards. Learning IELTS has never been this engaging.</p>
+      </div>
+      <!-- Feature 6 -->
+      <div class="gradient-border tilt-card rounded-2xl p-6 group">
+        <div class="w-12 h-12 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <i class="fas fa-chart-line text-cyan-400 text-xl"></i>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Progress Analytics</h3>
+        <p class="text-surface-200 text-sm leading-relaxed">AI-predicted band scores, weak area identification, study time tracking, and readiness assessment for exam day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 30-DAY ROADMAP SECTION -->
+<section id="roadmap" class="relative py-24 px-4" style="background:linear-gradient(180deg, transparent 0%, rgba(249,105,7,0.03) 50%, transparent 100%);">
+  <div class="noise-overlay"></div>
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Structured Roadmap</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Your 30-Day <span class="text-brand-400">Journey</span></h2>
+      <p class="text-surface-200 max-w-xl mx-auto">Four focused weeks. From foundations to full exam readiness. Click any day to see what you'll study.</p>
+    </div>
+
+    <!-- Week tabs -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <button class="tab-btn active glass px-5 py-2.5 rounded-xl text-sm font-semibold border border-transparent transition-all" data-week="1" onclick="showWeek(1)">Week 1 — Foundation</button>
+      <button class="tab-btn glass px-5 py-2.5 rounded-xl text-sm font-semibold border border-transparent transition-all" data-week="2" onclick="showWeek(2)">Week 2 — Skill Building</button>
+      <button class="tab-btn glass px-5 py-2.5 rounded-xl text-sm font-semibold border border-transparent transition-all" data-week="3" onclick="showWeek(3)">Week 3 — Advanced</button>
+      <button class="tab-btn glass px-5 py-2.5 rounded-xl text-sm font-semibold border border-transparent transition-all" data-week="4" onclick="showWeek(4)">Week 4 — Exam Mode</button>
+    </div>
+
+    <!-- Days grid -->
+    <div id="weekContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Day detail panel -->
+    <div id="dayDetail" class="mt-8 glass rounded-2xl p-6 hidden">
+      <div class="flex items-center justify-between mb-4">
+        <h3 id="dayDetailTitle" class="font-display font-bold text-xl"></h3>
+        <button onclick="document.getElementById('dayDetail').classList.add('hidden')" class="text-surface-300 hover:text-white transition"><i class="fas fa-times"></i></button>
+      </div>
+      <div id="dayDetailContent" class="space-y-3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES SECTION -->
+<section id="modules" class="relative py-24 px-4">
+  <div class="noise-overlay"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Complete Practice</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Four Core <span class="text-brand-400">Modules</span></h2>
+      <p class="text-surface-200 max-w-xl mx-auto">Master every IELTS skill with AI-enhanced practice tools and real-time feedback.</p>
+    </div>
+
+    <!-- Module tabs -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <button class="module-tab active flex items-center gap-2 glass px-5 py-3 rounded-xl text-sm font-semibold border border-transparent transition-all" data-mod="reading" onclick="showModule('reading')">
+        <i class="fas fa-book-open text-brand-400"></i> Reading
+      </button>
+      <button class="module-tab flex items-center gap-2 glass px-5 py-3 rounded-xl text-sm font-semibold border border-transparent transition-all" data-mod="listening" onclick="showModule('listening')">
+        <i class="fas fa-headphones text-green-400"></i> Listening
+      </button>
+      <button class="module-tab flex items-center gap-2 glass px-5 py-3 rounded-xl text-sm font-semibold border border-transparent transition-all" data-mod="writing" onclick="showModule('writing')">
+        <i class="fas fa-pen-nib text-blue-400"></i> Writing
+      </button>
+      <button class="module-tab flex items-center gap-2 glass px-5 py-3 rounded-xl text-sm font-semibold border border-transparent transition-all" data-mod="speaking" onclick="showModule('speaking')">
+        <i class="fas fa-microphone text-purple-400"></i> Speaking
+      </button>
+    </div>
+
+    <!-- Module content -->
+    <div id="moduleContent" class="gradient-border rounded-2xl p-8">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD PREVIEW SECTION -->
+<section id="dashboard" class="relative py-24 px-4" style="background:linear-gradient(180deg, transparent 0%, rgba(249,105,7,0.03) 50%, transparent 100%);">
+  <div class="noise-overlay"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Your Command Center</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Smart <span class="text-brand-400">Dashboard</span></h2>
+      <p class="text-surface-200 max-w-xl mx-auto">Everything at a glance — tasks, progress, scores, streaks, and AI insights.</p>
+    </div>
+
+    <!-- Dashboard mockup -->
+    <div class="glass rounded-3xl p-6 sm:p-8 glow-accent">
+      <div class="grid lg:grid-cols-3 gap-6">
+        <!-- Left: Today's tasks -->
+        <div class="lg:col-span-2 space-y-5">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-display font-bold text-xl">Today's Tasks</h3>
+              <p class="text-surface-300 text-sm mt-1">Day 7 of 30 — Speaking Introduction</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="fire-flicker text-2xl">🔥</div>
+              <div>
+                <div class="font-display font-bold text-lg leading-none">7</div>
+                <div class="text-xs text-surface-300">Day Streak</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Task items -->
+          <div class="space-y-3" id="taskList">
+            <div class="flex items-center gap-4 glass rounded-xl p-4 cursor-pointer group" onclick="toggleTask(this)">
+              <div class="w-6 h-6 rounded-full border-2 border-green-500 bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-check text-green-400 text-xs"></i>
+              </div>
+              <div class="flex-1">
+                <span class="text-sm font-medium line-through text-surface-300">2 Reading Passages</span>
+              </div>
+              <span class="text-xs text-green-400 font-medium">+25 XP</span>
+            </div>
+            <div class="flex items-center gap-4 glass rounded-xl p-4 cursor-pointer group" onclick="toggleTask(this)">
+              <div class="w-6 h-6 rounded-full border-2 border-green-500 bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-check text-green-400 text-xs"></i>
+              </div>
+              <div class="flex-1">
+                <span class="text-sm font-medium line-through text-surface-300">1 Listening Test</span>
+              </div>
+              <span class="text-xs text-green-400 font-medium">+30 XP</span>
+            </div>
+            <div class="flex items-center gap-4 glass rounded-xl p-4 cursor-pointer group" onclick="toggleTask(this)">
+              <div class="task-check w-6 h-6 rounded-full border-2 border-surface-300 flex items-center justify-center flex-shrink-0 transition-all">
+              </div>
+              <div class="flex-1">
+                <span class="text-sm font-medium">20 Vocabulary Words</span>
+              </div>
+              <span class="text-xs text-brand-400 font-medium">+15 XP</span>
+            </div>
+            <div class="flex items-center gap-4 glass rounded-xl p-4 cursor-pointer group" onclick="toggleTask(this)">
+              <div class="task-check w-6 h-6 rounded-full border-2 border-surface-300 flex items-center justify-center flex-shrink-0 transition-all">
+              </div>
+              <div class="flex-1">
+                <span class="text-sm font-medium">Speaking Practice — Cue Card</span>
+              </div>
+              <span class="text-xs text-brand-400 font-medium">+35 XP</span>
+            </div>
+            <div class="flex items-center gap-4 glass rounded-xl p-4 cursor-pointer group" onclick="toggleTask(this)">
+              <div class="task-check w-6 h-6 rounded-full border-2 border-surface-300 flex items-center justify-center flex-shrink-0 transition-all">
+              </div>
+              <div class="flex-1">
+                <span class="text-sm font-medium">Writing Task 2 — Essay</span>
+              </div>
+              <span class="text-xs text-brand-400 font-medium">+40 XP</span>
+            </div>
+          </div>
+
+          <!-- XP bar -->
+          <div class="glass rounded-xl p-4">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm font-medium">Daily XP Progress</span>
+              <span class="text-sm text-brand-400 font-semibold">55 / 145 XP</span>
+            </div>
+            <div class="w-full h-3 rounded-full bg-surface-600 overflow-hidden">
+              <div class="h-full rounded-full bg-gradient-to-r from-brand-600 to-brand-400 progress-animate" style="width:38%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Stats -->
+        <div class="space-y-5">
+          <!-- Progress ring -->
+          <div class="glass rounded-xl p-5 text-center">
+            <div class="relative inline-block">
+              <svg width="120" height="120" class="transform -rotate-90">
+                <circle cx="60" cy="60" r="52" stroke="rgba(255,255,255,0.06)" stroke-width="8" fill="none"/>
+                <circle cx="60" cy="60" r="52" stroke="url(#progGrad)" stroke-width="8" fill="none"
+                  stroke-dasharray="326.73" stroke-dashoffset="227" stroke-linecap="round"/>
+                <defs>
+                  <linearGradient id="progGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#F96907"/>
+                    <stop offset="100%" stop-color="#FB8B3C"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="absolute inset-0 flex items-center justify-center flex-col">
+                <span class="font-display font-bold text-2xl">23%</span>
+                <span class="text-xs text-surface-300">Complete</span>
+              </div>
+            </div>
+            <p class="text-sm text-surface-200 mt-3">Day 7 of 30</p>
+          </div>
+
+          <!-- AI Band prediction -->
+          <div class="glass rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-3">
+              <i class="fas fa-robot text-brand-400 text-sm"></i>
+              <span class="text-sm font-semibold">AI Band Prediction</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="text-center p-2 rounded-lg bg-surface-800/50">
+                <div class="font-display font-bold text-lg text-brand-400">6.5</div>
+                <div class="text-xs text-surface-300">Reading</div>
+              </div>
+              <div class="text-center p-2 rounded-lg bg-surface-800/50">
+                <div class="font-display font-bold text-lg text-yellow-400">5.5</div>
+                <div class="text-xs text-surface-300">Listening</div>
+              </div>
+              <div class="text-center p-2 rounded-lg bg-surface-800/50">
+                <div class="font-display font-bold text-lg text-green-400">6.0</div>
+                <div class="text-xs text-surface-300">Writing</div>
+              </div>
+              <div class="text-center p-2 rounded-lg bg-surface-800/50">
+                <div class="font-display font-bold text-lg text-red-400">5.0</div>
+                <div class="text-xs text-surface-300">Speaking</div>
+              </div>
+            </div>
+            <div class="mt-3 text-center p-2 rounded-lg bg-brand-500/10 border border-brand-500/20">
+              <span class="text-xs text-surface-200">Overall Estimated: </span>
+              <span class="font-display font-bold text-brand-400">6.0</span>
+            </div>
+          </div>
+
+          <!-- Weak areas -->
+          <div class="glass rounded-xl p-5">
+            <span class="text-sm font-semibold mb-3 block">Weak Areas</span>
+            <div class="space-y-3">
+              <div>
+                <div class="flex justify-between text-xs mb-1"><span>Listening</span><span class="text-red-400">Weak</span></div>
+                <div class="w-full h-2 rounded-full bg-surface-600"><div class="h-full rounded-full bg-red-500 progress-animate" style="width:35%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs mb-1"><span>Speaking</span><span class="text-yellow-400">Medium</span></div>
+                <div class="w-full h-2 rounded-full bg-surface-600"><div class="h-full rounded-full bg-yellow-500 progress-animate" style="width:55%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs mb-1"><span>Writing</span><span class="text-green-400">Good</span></div>
+                <div class="w-full h-2 rounded-full bg-surface-600"><div class="h-full rounded-full bg-green-500 progress-animate" style="width:70%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs mb-1"><span>Reading</span><span class="text-green-400">Strong</span></div>
+                <div class="w-full h-2 rounded-full bg-surface-600"><div class="h-full rounded-full bg-green-400 progress-animate" style="width:82%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOCABULARY FLASHCARD DEMO -->
+<section id="vocabulary" class="relative py-24 px-4">
+  <div class="noise-overlay"></div>
+  <div class="max-w-4xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Vocabulary Builder</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Learn Words <span class="text-brand-400">Faster</span></h2>
+      <p class="text-surface-200 max-w-xl mx-auto">Interactive flashcards with meanings, examples, and pronunciation. Tap to flip, swipe to learn.</p>
+    </div>
+
+    <!-- Flashcard -->
+    <div class="flex justify-center mb-8">
+      <div class="w-80 h-52 cursor-pointer perspective-1000" onclick="flipCard()">
+        <div id="flashcardInner" class="flashcard-inner w-full h-full relative">
+          <div class="flashcard-front gradient-border rounded-2xl bg-surface-700 text-center">
+            <span class="text-xs text-brand-400 font-medium mb-2 block">Tap to reveal</span>
+            <span id="flashWord" class="font-display font-bold text-3xl"></span>
+            <span id="flashPron" class="text-sm text-surface-300 mt-2 block"></span>
+          </div>
+          <div class="flashcard-back gradient-border rounded-2xl bg-surface-700 text-center">
+            <span id="flashMeaning" class="font-semibold text-lg mb-2 block"></span>
+            <span id="flashExample" class="text-sm text-surface-200 italic leading-relaxed"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flashcard controls -->
+    <div class="flex justify-center items-center gap-4">
+      <button onclick="prevCard()" class="w-12 h-12 glass rounded-xl flex items-center justify-center hover:bg-white/[0.08] transition" aria-label="Previous card">
+        <i class="fas fa-chevron-left text-surface-200"></i>
+      </button>
+      <span id="cardCounter" class="text-sm text-surface-300 font-medium w-16 text-center"></span>
+      <button onclick="nextCard()" class="w-12 h-12 glass rounded-xl flex items-center justify-center hover:bg-white/[0.08] transition" aria-label="Next card">
+        <i class="fas fa-chevron-right text-surface-200"></i>
+      </button>
+    </div>
+
+    <!-- Quick quiz -->
+    <div class="mt-16 glass rounded-2xl p-8">
+      <h3 class="font-display font-bold text-xl mb-6 text-center">Quick Vocab Quiz</h3>
+      <div id="quizArea">
+        <p id="quizQuestion" class="text-center text-lg mb-6"></p>
+        <div id="quizOptions" class="grid grid-cols-2 gap-3 max-w-md mx-auto"></div>
+        <p id="quizFeedback" class="text-center text-sm mt-4 font-medium hidden"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI FEATURES SECTION -->
+<section id="ai" class="relative py-24 px-4" style="background:linear-gradient(180deg, transparent 0%, rgba(249,105,7,0.03) 50%, transparent 100%);">
+  <div class="noise-overlay"></div>
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">AI-Powered</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Meet Your <span class="text-brand-400">AI Team</span></h2>
+      <p class="text-surface-200 max-w-xl mx-auto">Three AI assistants working together to maximize your band score improvement.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- AI Tutor -->
+      <div class="gradient-border tilt-card rounded-2xl p-6">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-500/20 to-brand-400/10 flex items-center justify-center mb-5">
+          <i class="fas fa-robot text-brand-400 text-2xl"></i>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-2">AI Tutor</h3>
+        <p class="text-surface-200 text-sm mb-4">ChatGPT-style assistant that explains grammar, answers your questions, and generates custom exercises on the fly.</p>
+        <!-- Mini chat demo -->
+        <div class="space-y-2 mb-4">
+          <div class="flex gap-2">
+            <div class="w-6 h-6 rounded-full bg-brand-500/20 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-user text-brand-400 text-[10px]"></i></div>
+            <div class="glass rounded-xl rounded-tl-none px-3 py-2 text-xs text-surface-200">What's the difference between "affect" and "effect"?</div>
+          </div>
+          <div class="flex gap-2 justify-end">
+            <div class="bg-brand-500/15 border border-brand-500/20 rounded-xl rounded-tr-none px-3 py-2 text-xs text-surface-100 max-w-[85%]">"Affect" is usually a verb meaning to influence. "Effect" is usually a noun meaning the result. Example: The rain will affect our plans. The effect was surprising.</div>
+            <div class="w-6 h-6 rounded-full bg-brand-500/30 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-robot text-brand-400 text-[10px]"></i></div>
+          </div>
+        </div>
+        <button class="w-full glass hover:bg-white/[0.08] rounded-xl py-2.5 text-sm font-medium text-brand-400 transition">Try AI Tutor</button>
+      </div>
+
+      <!-- AI Band Predictor -->
+      <div class="gradient-border tilt-card rounded-2xl p-6">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-400/10 flex items-center justify-center mb-5">
+          <i class="fas fa-chart-bar text-green-400 text-2xl"></i>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-2">AI Band Predictor</h3>
+        <p class="text-surface-200 text-sm mb-4">Analyzes your practice performance across all modules and gives an estimated IELTS band score in real-time.</p>
+        <div class="glass rounded-xl p-4 mb-4 space-y-2">
+          <div class="flex justify-between text-xs"><span class="text-surface-300">Based on 47 practices</span><span class="text-green-400">Updated today</span></div>
+          <div class="grid grid-cols-4 gap-2 text-center">
+            <div><div class="font-bold text-sm">6.5</div><div class="text-[10px] text-surface-300">Read</div></div>
+            <div><div class="font-bold text-sm">5.5</div><div class="text-[10px] text-surface-300">Listen</div></div>
+            <div><div class="font-bold text-sm">6.0</div><div class="text-[10px] text-surface-300">Write</div></div>
+            <div><div class="font-bold text-sm">5.0</div><div class="text-[10px] text-surface-300">Speak</div></div>
+          </div>
+          <div class="text-center pt-2 border-t border-white/5">
+            <span class="text-xs text-surface-300">Predicted Overall: </span>
+            <span class="font-display font-bold text-green-400">6.0</span>
+          </div>
+        </div>
+        <button class="w-full glass hover:bg-white/[0.08] rounded-xl py-2.5 text-sm font-medium text-green-400 transition">View Full Analysis</button>
+      </div>
+
+      <!-- AI Study Planner -->
+      <div class="gradient-border tilt-card rounded-2xl p-6">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-400/10 flex items-center justify-center mb-5">
+          <i class="fas fa-calendar-alt text-blue-400 text-2xl"></i>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-2">AI Study Planner</h3>
+        <p class="text-surface-200 text-sm mb-4">Missed a day? Your plan auto-adjusts. Weak in listening? Your schedule adapts. Always the optimal study path.</p>
+        <div class="glass rounded-xl p-4 mb-4 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-red-500/15 flex items-center justify-center"><i class="fas fa-exclamation-triangle text-red-400 text-xs"></i></div>
+            <div><div class="text-xs font-medium">Missed Day 5</div><div class="text-[10px] text-surface-300">Plan auto-adjusted</div></div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-yellow-500/15 flex items-center justify-center"><i class="fas fa-headphones text-yellow-400 text-xs"></i></div>
+            <div><div class="text-xs font-medium">Listening focus added</div><div class="text-[10px] text-surface-300">Weak area detected</div></div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-green-500/15 flex items-center justify-center"><i class="fas fa-check text-green-400 text-xs"></i></div>
+            <div><div class="text-xs font-medium">Schedule optimized</div><div class="text-[10px] text-surface-300">On track for Band 7+</div></div>
+          </div>
+        </div>
+        <button class="w-full glass hover:bg-white/[0.08] rounded-xl py-2.5 text-sm font-medium text-blue-400 transition">View My Plan</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAMIFICATION SECTION -->
+<section id="gamification" class="relative py-24 px-4">
+  <div class="noise-overlay"></div>
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Stay Motivated</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Learn, Earn, <span class="text-brand-400">Conquer</span></h2>
+      <p class="text-surface-200 max-w-xl mx-auto">XP, streaks, levels, and badges — Duolingo-style motivation to keep you going every single day.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- XP & Levels -->
+      <div class="gradient-border rounded-2xl p-6">
+        <h3 class="font-display font-bold text-lg mb-5 flex items-center gap-2"><i class="fas fa-star text-yellow-400"></i> XP & Levels</h3>
+        <div class="space-y-4">
+          <div class="glass rounded-xl p-4">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-surface-500 flex items-center justify-center font-display font-bold text-sm">1</div>
+                <div><div class="font-medium text-sm">Beginner</div><div class="text-xs text-surface-300">0 — 500 XP</div></div>
+              </div>
+              <span class="text-xs text-green-400">Completed</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-surface-600"><div class="h-full rounded-full bg-green-500" style="width:100%"></div></div>
+          </div>
+          <div class="glass rounded-xl p-4">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center font-display font-bold text-sm text-brand-400">2</div>
+                <div><div class="font-medium text-sm">Intermediate</div><div class="text-xs text-surface-300">500 — 1500 XP</div></div>
+              </div>
+              <span class="text-xs text-brand-400">Current</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-surface-600"><div class="h-full rounded-full bg-gradient-to-r from-brand-600 to-brand-400" style="width:62%"></div></div>
+            <div class="text-xs text-surface-300 mt-1">1,120 / 1,500 XP</div>
+          </div>
+          <div class="glass rounded-xl p-4 opacity-50">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-surface-600 flex items-center justify-center font-display font-bold text-sm text-surface-300">3</div>
+                <div><div class="font-medium text-sm">Advanced</div><div class="text-xs text-surface-300">1500 — 3000 XP</div></div>
+              </div>
+              <span class="text-xs text-surface-300">Locked</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-surface-600"><div class="h-full rounded-full bg-surface-400" style="width:0%"></div></div>
+          </div>
+          <div class="glass rounded-xl p-4 opacity-35">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-surface-600 flex items-center justify-center font-display font-bold text-sm text-surface-300">4</div>
+              <div><div class="font-medium text-sm">IELTS Warrior</div><div class="text-xs text-surface-300">3000+ XP</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="gradient-border rounded-2xl p-6">
+        <h3 class="font-display font-bold text-lg mb-5 flex items-center gap-2"><i class="fas fa-medal text-brand-400"></i> Badges</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="glass rounded-xl p-4 text-center badge-shine">
+            <div class="w-14 h-14 rounded-2xl bg-brand-500/20 flex items-center justify-center mx-auto mb-2">
+              <i class="fas fa-book-reader text-brand-400 text-xl"></i>
+            </div>
+            <div class="font-medium text-sm">Reading Master</div>
+            <div class="text-xs text-surface-300 mt-1">10 passages done</div>
+            <div class="text-xs text-green-400 mt-1">Unlocked</div>
+          </div>
+          <div class="glass rounded-xl p-4 text-center badge-shine">
+            <div class="w-14 h-14 rounded-2xl bg-yellow-500/20 flex items-center justify-center mx-auto mb-2">
+              <i class="fas fa-crown text-yellow-400 text-xl"></i>
+            </div>
+            <div class="font-medium text-sm">Vocabulary King</div>
+            <div class="text-xs text-surface-300 mt-1">200 words learned</div>
+            <div class="text-xs text-green-400 mt-1">Unlocked</div>
+          </div>
+          <div class="glass rounded-xl p-4 text-center">
+            <div class="w-14 h-14 rounded-2xl bg-green-500/20 flex items-center justify-center mx-auto mb-2">
+              <i class="fas fa-headphones text-green-400 text-xl"></i>
+            </div>
+            <div class="font-medium text-sm">Listening Beast</div>
+            <div class="text-xs text-surface-300 mt-1">15 tests done</div>
+            <div class="text-xs text-surface-300 mt-1">7/15</div>
+          </div>
+          <div class="glass rounded-xl p-4 text-center opacity-40">
+            <div class="w-14 h-14 rounded-2xl bg-surface-600 flex items-center justify-center mx-auto mb-2">
+              <i class="fas fa-lock text-surface-300 text-xl"></i>
+            </div>
+            <div class="font-medium text-sm">Essay Expert</div>
+            <div class="text-xs text-surface-300 mt-1">20 essays done</div>
+            <div class="text-xs text-surface-300 mt-1">Locked</div>
+          </div>
+          <div class="glass rounded-xl p-4 text-center opacity-40">
+            <div class="w-14 h-14 rounded-2xl bg-surface-600 flex items-center justify-center mx-auto mb-2">
+              <i class="fas fa-lock text-surface-300 text-xl"></i>
+            </div>
+            <div class="font-medium text-sm">7-Day Streak</div>
+            <div class="text-xs text-surface-300 mt-1">7 days in a row</div>
+            <div class="text-xs text-surface-300 mt-1">6/7</div>
+          </div>
+          <div class="glass rounded-xl p-4 text-center opacity-40">
+            <div class="w-14 h-14 rounded-2xl bg-surface-600 flex items-center justify-center mx-auto mb-2">
+              <i class="fas fa-lock text-surface-300 text-xl"></i>
+            </div>
+            <div class="font-medium text-sm">Mock Champion</div>
+            <div class="text-xs text-surface-300 mt-1">5 full mocks</div>
+            <div class="text-xs text-surface-300 mt-1">Locked</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOCK TEST SECTION -->
+<section id="mocktest" class="relative py-24 px-4" style="background:linear-gradient(180deg, transparent 0%, rgba(249,105,7,0.03) 50%, transparent 100%);">
+  <div class="noise-overlay"></div>
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Real Exam Practice</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Mock Test <span class="text-brand-400">Arena</span></h2>
+      <p class="text-surface-200 max-w-xl mx-auto">Three test types — from quick skill checks to full exam simulations with real timers and AI analysis.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Mini test -->
+      <div class="gradient-border tilt-card rounded-2xl p-6 text-center">
+        <div class="w-16 h-16 rounded-2xl bg-blue-500/15 flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-bolt text-blue-400 text-2xl"></i>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-2">Mini Test</h3>
+        <p class="text-surface-200 text-sm mb-4">10-15 minute quick checks. Focus on one skill at a time. Great for daily warm-ups.</p>
+        <div class="glass rounded-lg p-3 mb-4 text-xs text-surface-200">
+          <div class="flex justify-between mb-1"><span>Questions</span><span>10-15</span></div>
+          <div class="flex justify-between mb-1"><span>Duration</span><span>10-15 min</span></div>
+          <div class="flex justify-between"><span>AI Analysis</span><span class="text-green-400">Included</span></div>
+        </div>
+        <button onclick="showToast('Mini test starting...')" class="w-full bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 rounded-xl py-2.5 text-sm font-semibold transition">Start Mini Test</button>
+      </div>
+
+      <!-- Sectional test -->
+      <div class="gradient-border tilt-card rounded-2xl p-6 text-center glow-accent">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-500 text-white text-xs font-semibold px-3 py-1 rounded-full">Most Popular</div>
+        <div class="w-16 h-16 rounded-2xl bg-brand-500/15 flex items-center justify-center mx-auto mb-4 mt-2">
+          <i class="fas fa-clipboard-list text-brand-400 text-2xl"></i>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-2">Sectional Test</h3>
+        <p class="text-surface-200 text-sm mb-4">Full section practice under timed conditions. Complete Reading, Listening, Writing, or Speaking section.</p>
+        <div class="glass rounded-lg p-3 mb-4 text-xs text-surface-200">
+          <div class="flex justify-between mb-1"><span>Questions</span><span>40</span></div>
+          <div class="flex justify-between mb-1"><span>Duration</span><span>60 min</span></div>
+          <div class="flex justify-between"><span>AI Analysis</span><span class="text-green-400">Detailed</span></div>
+        </div>
+        <button onclick="showToast('Sectional test starting...')" class="w-full bg-brand-500 hover:bg-brand-600 text-white rounded-xl py-2.5 text-sm font-semibold transition">Start Sectional Test</button>
+      </div>
+
+      <!-- Full exam -->
+      <div class="gradient-border tilt-card rounded-2xl p-6 text-center">
+        <div class="w-16 h-16 rounded-2xl bg-green-500/15 flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-graduation-cap text-green-400 text-2xl"></i>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-2">Full Exam</h3>
+        <p class="text-surface-200 text-sm mb-4">Complete IELTS simulation — all 4 sections, real timer, real difficulty. Your final readiness check.</p>
+        <div class="glass rounded-lg p-3 mb-4 text-xs text-surface-200">
+          <div class="flex justify-between mb-1"><span>Questions</span><span>Full Exam</span></div>
+          <div class="flex justify-between mb-1"><span>Duration</span><span>2h 45min</span></div>
+          <div class="flex justify-between"><span>AI Analysis</span><span class="text-green-400">Comprehensive</span></div>
+        </div>
+        <button onclick="showToast('Full exam starting...')" class="w-full bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-xl py-2.5 text-sm font-semibold transition">Start Full Exam</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="relative py-24 px-4">
+  <div class="noise-overlay"></div>
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Success Stories</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Students Love <span class="text-brand-400">BandBoost</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="gradient-border rounded-2xl p-6 tilt-card">
+        <div class="flex items-center gap-1 mb-3">
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+        </div>
+        <p class="text-surface-200 text-sm leading-relaxed mb-4">"I went from 5.5 to 7.0 in just 28 days. The AI speaking coach was a game-changer — it caught filler words I never noticed. The daily structure kept me disciplined."</p>
+        <div class="flex items-center gap-3">
+          <img src="https://picsum.photos/seed/student1/40/40.jpg" class="w-10 h-10 rounded-full object-cover" alt="Student">
+          <div><div class="font-medium text-sm">Priya Sharma</div><div class="text-xs text-surface-300">Band 5.5 → 7.0</div></div>
+        </div>
+      </div>
+      <div class="gradient-border rounded-2xl p-6 tilt-card">
+        <div class="flex items-center gap-1 mb-3">
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+        </div>
+        <p class="text-surface-200 text-sm leading-relaxed mb-4">"The streak system is addictive in the best way. I never missed a day because I didn't want to lose my fire streak. Writing evaluations were incredibly detailed and helpful."</p>
+        <div class="flex items-center gap-3">
+          <img src="https://picsum.photos/seed/student2/40/40.jpg" class="w-10 h-10 rounded-full object-cover" alt="Student">
+          <div><div class="font-medium text-sm">Ahmed Hassan</div><div class="text-xs text-surface-300">Band 6.0 → 7.5</div></div>
+        </div>
+      </div>
+      <div class="gradient-border rounded-2xl p-6 tilt-card">
+        <div class="flex items-center gap-1 mb-3">
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star-half-alt text-yellow-400 text-sm"></i>
+        </div>
+        <p class="text-surface-200 text-sm leading-relaxed mb-4">"As a working professional, I only had 2 hours a day. The AI study planner adjusted my schedule perfectly. Vocabulary flashcards and quizzes made learning feel like a game."</p>
+        <div class="flex items-center gap-3">
+          <img src="https://picsum.photos/seed/student3/40/40.jpg" class="w-10 h-10 rounded-full object-cover" alt="Student">
+          <div><div class="font-medium text-sm">Lin Mei</div><div class="text-xs text-surface-300">Band 5.0 → 6.5</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="relative py-24 px-4" style="background:linear-gradient(180deg, transparent 0%, rgba(249,105,7,0.03) 50%, transparent 100%);">
+  <div class="noise-overlay"></div>
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Simple Pricing</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-4">Start Free, <span class="text-brand-400">Go Premium</span></h2>
+      <p class="text-surface-200 max-w-xl mx-auto">Try everything free for 7 days. Upgrade when you're ready to go all-in.</p>
+
+      <!-- Billing toggle -->
+      <div class="flex items-center justify-center gap-3 mt-6">
+        <span id="monthlyLabel" class="text-sm font-medium text-white">Monthly</span>
+        <button id="billingToggle" onclick="toggleBilling()" class="w-14 h-7 rounded-full bg-surface-500 relative transition-all" aria-label="Toggle billing">
+          <div id="billingDot" class="w-5 h-5 rounded-full bg-brand-500 absolute top-1 left-1 transition-all"></div>
+        </button>
+        <span id="yearlyLabel" class="text-sm font-medium text-surface-300">Yearly <span class="text-green-400 text-xs font-semibold">-40%</span></span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <!-- Free -->
+      <div class="gradient-border rounded-2xl p-8">
+        <div class="text-sm font-semibold text-surface-200 mb-1">Free</div>
+        <div class="font-display font-bold text-4xl mb-1">$0</div>
+        <div class="text-xs text-surface-300 mb-6">Forever free</div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-400 text-xs"></i> Limited practice questions</li>
+          <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-400 text-xs"></i> Basic vocabulary access</li>
+          <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-400 text-xs"></i> 1 mini mock test / week</li>
+          <li class="flex items-center gap-2 text-sm text-surface-300"><i class="fas fa-times text-surface-400 text-xs"></i> AI evaluation</li>
+          <li class="flex items-center gap-2 text-sm text-surface-300"><i class="fas fa-times text-surface-400 text-xs"></i> Full mock tests</li>
+          <li class="flex items-center gap-2 text-sm text-surface-300"><i class="fas fa-times text-surface-400 text-xs"></i> Advanced analytics</li>
+          <li class="flex items-center gap-2 text-sm text-surface-300"><i class="fas fa-times text-surface-400 text-xs"></i> Ad-free experience</li>
+        </ul>
+        <button onclick="openModal('authModal')" class="w-full glass hover:bg-white/[0.08] rounded-xl py-3 text-sm font-semibold transition">Get Started Free</button>
+      </div>
+
+      <!-- Premium -->
+      <div class="relative gradient-border rounded-2xl p-8 glow-accent">
+        <div class="absolute -top-3 right-6 bg-brand-500 text-white text-xs font-semibold px-4 py-1 rounded-full">Recommended</div>
+        <div class="text-sm font-semibold text-brand-400 mb-1">Premium</div>
+        <div class="font-display font-bold text-4xl mb-1" id="priceDisplay">$19</div>
+        <div class="text-xs text-surface-300 mb-6" id="pricePeriod">per month</div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-400 text-xs"></i> Unlimited practice</li>
+          <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-400 text-xs"></i> Full vocabulary system</li>
+          <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-400 text-xs"></i> Unlimited mock tests</li>
+          <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-brand-400 text-xs"></i> AI Speaking evaluation</li>
+          <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-brand-400 text-xs"></i> AI Writing evaluation</li>
+          <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-brand-400 text-xs"></i> Advanced analytics</li>
+          <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-brand-400 text-xs"></i> Ad-free experience</li>
+        </ul>
+        <button onclick="openModal('authModal')" class="w-full bg-brand-500 hover:bg-brand-600 text-white rounded-xl py-3 text-sm font-semibold transition hover:shadow-lg hover:shadow-brand-500/25">Start 7-Day Free Trial</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="relative py-24 px-4">
+  <div class="noise-overlay"></div>
+  <div class="max-w-3xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-brand-400 text-sm font-semibold tracking-wider uppercase">Got Questions?</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3">Frequently <span class="text-brand-400">Asked</span></h2>
+    </div>
+
+    <div class="space-y-3" id="faqContainer">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="relative py-24 px-4">
+  <div class="noise-overlay"></div>
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-15 blur-3xl" style="background:radial-gradient(circle, var(--accent) 0%, transparent 70%);"></div>
+  </div>
+  <div class="max-w-3xl mx-auto relative z-10 text-center">
+    <div class="fire-flicker text-5xl mb-6">🔥</div>
+    <h2 class="font-display text-4xl sm:text-5xl font-bold mb-4">Your IELTS Journey<br>Starts <span class="text-brand-400">Today</span></h2>
+    <p class="text-surface-200 text-lg mb-8 max-w-lg mx-auto">Join 47,850+ students who cracked IELTS with BandBoost 30. 30 days. One goal. Band 7+.</p>
+    <button onclick="openModal('authModal')" class="group bg-brand-500 hover:bg-brand-600 text-white font-semibold px-10 py-4 rounded-2xl text-lg transition-all hover:shadow-xl hover:shadow-brand-500/30 hover:-translate-y-0.5">
+      Start Free Now <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+    </button>
+    <p class="text-xs text-surface-300 mt-4">No credit card required. Start learning in 60 seconds.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative py-16 px-4 border-t border-white/5">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-400 flex items-center justify-center">
+            <i class="fas fa-bolt text-white text-sm"></i>
+          </div>
+          <span class="font-display font-bold text-lg">BandBoost <span class="text-brand-500">30</span></span>
+        </div>
+        <p class="text-surface-300 text-sm leading-relaxed">AI-powered IELTS preparation. Structured, smart, and designed to get you to Band 7+ in 30 days.</p>
+      </div>
+      <div>
+        <h4 class="font-display font-semibold mb-4">Product</h4>
+        <ul class="space-y-2 text-sm text-surface-200">
+          <li><a href="#features" class="hover:text-white transition">Features</a></li>
+          <li><a href="#roadmap" class="hover:text-white transition">30-Day Plan</a></li>
+          <li><a href="#modules" class="hover:text-white transition">Modules</a></li>
+          <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display font-semibold mb-4">Resources</h4>
+        <ul class="space-y-2 text-sm text-surface-200">
+          <li><a href="#" class="hover:text-white transition">Band Calculator</a></li>
+          <li><a href="#" class="hover:text-white transition">Essay Checker</a></li>
+          <li><a href="#" class="hover:text-white transition">Speaking Scorer</a></li>
+          <li><a href="#" class="hover:text-white transition">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display font-semibold mb-4">Company</h4>
+        <ul class="space-y-2 text-sm text-surface-200">
+          <li><a href="#" class="hover:text-white transition">About</a></li>
+          <li><a href="#" class="hover:text-white transition">Contact</a></li>
+          <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-white/5">
+      <p class="text-xs text-surface-300">&copy; 2025 BandBoost 30. All rights reserved.</p>
+      <div class="flex items-center gap-4 mt-4 sm:mt-0">
+        <a href="#" class="w-9 h-9 glass rounded-lg flex items-center justify-center hover:bg-white/[0.08] transition" aria-label="Facebook"><i class="fab fa-facebook-f text-surface-200 text-sm"></i></a>
+        <a href="#" class="w-9 h-9 glass rounded-lg flex items-center justify-center hover:bg-white/[0.08] transition" aria-label="Twitter"><i class="fab fa-twitter text-surface-200 text-sm"></i></a>
+        <a href="#" class="w-9 h-9 glass rounded-lg flex items-center justify-center hover:bg-white/[0.08] transition" aria-label="Instagram"><i class="fab fa-instagram text-surface-200 text-sm"></i></a>
+        <a href="#" class="w-9 h-9 glass rounded-lg flex items-center justify-center hover:bg-white/[0.08] transition" aria-label="YouTube"><i class="fab fa-youtube text-surface-200 text-sm"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal-overlay" onclick="if(event.target===this)closeModal('authModal')">
+  <div class="glass rounded-3xl p-8 w-full max-w-md mx-4 relative" style="background:rgba(18,18,25,0.95);border:1px solid rgba(255,255,255,0.1);">
+    <button onclick="closeModal('authModal')" class="absolute top-4 right-4 text-surface-300 hover:text-white transition" aria-label="Close"><i class="fas fa-times"></i></button>
+
+    <!-- Auth tabs -->
+    <div class="flex gap-4 mb-6">
+      <button id="loginTab" onclick="switchAuthTab('login')" class="font-display font-semibold text-lg border-b-2 border-brand-500 pb-1 text-white">Log In</button>
+      <button id="signupTab" onclick="switchAuthTab('signup')" class="font-display font-semibold text-lg border-b-2 border-transparent pb-1 text-surface-300 hover:text-white transition">Sign Up</button>
+    </div>
+
+    <!-- Social login -->
+    <div class="space-y-3 mb-6">
+      <button onclick="showToast('Google auth initiated...')" class="w-full glass hover:bg-white/[0.08] rounded-xl py-3 text-sm font-medium flex items-center justify-center gap-3 transition">
+        <i class="fab fa-google text-red-400"></i> Continue with Google
+      </button>
+      <button onclick="showToast('Facebook auth initiated...')" class="w-full glass hover:bg-white/[0.08] rounded-xl py-3 text-sm font-medium flex items-center justify-center gap-3 transition">
+        <i class="fab fa-facebook text-blue-400"></i> Continue with Facebook
+      </button>
+    </div>
+
+    <div class="flex items-center gap-3 mb-6">
+      <div class="flex-1 h-px bg-white/10"></div>
+      <span class="text-xs text-surface-300">or</span>
+      <div class="flex-1 h-px bg-white/10"></div>
+    </div>
+
+    <!-- Login form -->
+    <div id="loginForm">
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs text-surface-300 mb-1 block">Email</label>
+          <input type="email" placeholder="your@email.com" class="w-full bg-surface-700 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 transition placeholder-surface-300">
+        </div>
+        <div>
+          <label class="text-xs text-surface-300 mb-1 block">Password</label>
+          <input type="password" placeholder="Enter password" class="w-full bg-surface-700 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 transition placeholder-surface-300">
+        </div>
+        <button onclick="showToast('Welcome back! Logging you in...');closeModal('authModal')" class="w-full bg-brand-500 hover:bg-brand-600 text-white rounded-xl py-3 text-sm font-semibold transition">Log In</button>
+      </div>
+    </div>
+
+    <!-- Signup form -->
+    <div id="signupForm" class="hidden">
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs text-surface-300 mb-1 block">Full Name</label>
+          <input type="text" placeholder="Your name" class="w-full bg-surface-700 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 transition placeholder-surface-300">
+        </div>
+        <div>
+          <label class="text-xs text-surface-300 mb-1 block">Email</label>
+          <input type="email" placeholder="your@email.com" class="w-full bg-surface-700 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 transition placeholder-surface-300">
+        </div>
+        <button onclick="showToast('OTP sent to your email!');closeModal('authModal')" class="w-full bg-brand-500 hover:bg-brand-600 text-white rounded-xl py-3 text-sm font-semibold transition">Send OTP</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ONBOARDING MODAL -->
+<div id="onboardingModal" class="modal-overlay" onclick="if(event.target===this)closeModal('onboardingModal')">
+  <div class="glass rounded-3xl p-8 w-full max-w-md mx-4 relative" style="background:rgba(18,18,25,0.95);border:1px solid rgba(255,255,255,0.1);">
+    <button onclick="closeModal('onboardingModal')" class="absolute top-4 right-4 text-surface-300 hover:text-white transition" aria-label="Close"><i class="fas fa-times"></i></button>
+    <h3 class="font-display font-bold text-xl mb-2">Personalize Your Plan</h3>
+    <p class="text-surface-300 text-sm mb-6">Answer a few questions so AI can create your optimal 30-day roadmap.</p>
+
+    <div class="space-y-5">
+      <div>
+        <label class="text-xs text-surface-300 mb-2 block font-medium">Current IELTS Level</label>
+        <div class="grid grid-cols-3 gap-2">
+          <button class="onboard-btn glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white hover:bg-brand-500/20 transition" onclick="selectOnboard(this)">Beginner</button>
+          <button class="onboard-btn glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white hover:bg-brand-500/20 transition" onclick="selectOnboard(this)">Intermediate</button>
+          <button class="onboard-btn glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white hover:bg-brand-500/20 transition" onclick="selectOnboard(this)">Advanced</button>
+        </div>
+      </div>
+      <div>
+        <label class="text-xs text-surface-300 mb-2 block font-medium">Target Band Score</label>
+        <div class="grid grid-cols-4 gap-2">
+          <button class="onboard-btn glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white hover:bg-brand-500/20 transition" onclick="selectOnboard(this)">6.0</button>
+          <button class="onboard-btn glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white hover:bg-brand-500/20 transition" onclick="selectOnboard(this)">6.5</button>
+          <button class="onboard-btn glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white hover:bg-brand-500/20 transition" onclick="selectOnboard(this)">7.0</button>
+          <button class="onboard-btn glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white hover:bg-brand-500/20 transition" onclick="selectOnboard(this)">7.5+</button>
+        </div>
+      </div>
+      <div>
+        <label class="text-xs text-surface-300 mb-2 block font-medium">Exam Date</label>
+        <input type="date" class="w-full bg-surface-700 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 transition text-surface-200">
+      </div>
+      <div>
+        <label class="text-xs text-surface-300 mb-2 block font-medium">Weakest Section</label>
+        <div class="grid grid-cols-2 gap-2">
+          <button class="onboard-btn glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white hover:bg-brand-500/20 transition" onclick="selectOnboard(this)"><i class="fas fa-book-open mr-1"></i> Reading</button>
+          <button class="onboard-btn glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white hover:bg-brand-500/20 transition" onclick="selectOnboard(this)"><i class="fas fa-headphones mr-1"></i> Listening</button>
+          <button class="onboard-btn glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white hover:bg-brand-500/20 transition" onclick="selectOnboard(this)"><i class="fas fa-pen-nib mr-1"></i> Writing</button>
+          <button class="onboard-btn glass rounded-xl py-2.5 text-sm text-surface-200 hover:text-white hover:bg-brand-500/20 transition" onclick="selectOnboard(this)"><i class="fas fa-microphone mr-1"></i> Speaking</button>
+        </div>
+      </div>
+      <button onclick="showToast('AI roadmap generated! Your 30-day plan is ready.');closeModal('onboardingModal')" class="w-full bg-brand-500 hover:bg-brand-600 text-white rounded-xl py-3 text-sm font-semibold transition">Generate My AI Roadmap</button>
+    </div>
+  </div>
 </div>
 
 <script>
-    async function sendSMS() {
-        const phone = document.getElementById('phone').value;
-        const message = document.getElementById('message').value;
-        const statusDiv = document.getElementById('status');
+// ==================== DATA ====================
 
-        if(!phone || !message) {
-            alert("Please fill all fields!");
-            return;
-        }
+// 30-Day Roadmap Data
+const roadmapData = {
+  1: { // Week 1 - Foundation
+    title: 'Week 1 — Foundation',
+    days: [
+      { day: 1, title: 'IELTS Overview', tasks: ['Exam pattern & structure', 'Scoring system explained', 'Diagnostic test (full)'], icon: 'fa-compass' },
+      { day: 2, title: 'Basic Grammar', tasks: ['Tenses review & practice', 'Subject-verb agreement', 'Common grammar traps'], icon: 'fa-spell-check' },
+      { day: 3, title: 'Vocabulary Basics', tasks: ['High-frequency word list', 'Synonyms & antonyms', 'Context clue strategies'], icon: 'fa-font' },
+      { day: 4, title: 'Listening Basics', tasks: ['Section 1 format practice', 'Number & name spelling', 'Listening for keywords'], icon: 'fa-headphones' },
+      { day: 5, title: 'Reading Skimming', tasks: ['Skimming techniques', 'Scanning for details', '1 practice passage + timer'], icon: 'fa-book-open' },
+      { day: 6, title: 'Writing Task 1 Intro', tasks: ['Chart types overview', 'Key features identification', 'Sample answer analysis'], icon: 'fa-chart-bar' },
+      { day: 7, title: 'Speaking Introduction', tasks: ['Part 1 format & practice', 'Common topics rehearsal', 'Recording & self-review'], icon: 'fa-microphone' },
+    ]
+  },
+  2: { // Week 2 - Skill Building
+    title: 'Week 2 — Skill Building',
+    days: [
+      { day: 8, title: 'Speed Reading', tasks: ['Timed passage drill', 'Matching headings practice', 'Vocabulary from context'], icon: 'fa-bolt' },
+      { day: 9, title: 'Listening Section 2-3', tasks: ['Multi-speaker practice', 'Note completion drills', 'Speed control exercise'], icon: 'fa-volume-up' },
+      { day: 10, title: 'Writing Task 1 Practice', tasks: ['Line graph description', 'Comparison language', 'Timed writing (20 min)'], icon: 'fa-pen' },
+      { day: 11, title: 'Speaking Cue Cards', tasks: ['5 cue card practice', '2-minute talk drills', 'Fluency techniques'], icon: 'fa-comment-dots' },
+      { day: 12, title: 'Grammar Deep Dive', tasks: ['Complex sentences', 'Relative clauses', 'Conditional structures'], icon: 'fa-code' },
+      { day: 13, title: 'Mini Mock Test 1', tasks: ['Reading + Listening combo', 'Timed conditions', 'Score analysis'], icon: 'fa-stopwatch' },
+      { day: 14, title: 'Vocabulary Expansion', tasks: ['Academic word list', 'Collocations practice', 'Quiz battle'], icon: 'fa-brain' },
+    ]
+  },
+  3: { // Week 3 - Advanced
+    title: 'Week 3 — Advanced Practice',
+    days: [
+      { day: 15, title: 'Advanced Reading', tasks: ['True/False/Not Given mastery', 'Difficult passage practice', 'Time management drill'], icon: 'fa-graduation-cap' },
+      { day: 16, title: 'Listening Section 4', tasks: ['Lecture-style listening', 'Complex note completion', 'Accent practice (UK/AUS)'], icon: 'fa-assistive-listening-systems' },
+      { day: 17, title: 'Writing Task 2 Mastery', tasks: ['Essay structure deep dive', 'Argument & discussion essays', 'AI evaluation + rewrite'], icon: 'fa-pen-fancy' },
+      { day: 18, title: 'Speaking Confidence', tasks: ['Part 3 deep discussion', 'Abstract topic practice', 'Filler word elimination'], icon: 'fa-microphone-alt' },
+      { day: 19, title: 'Error Analysis Day', tasks: ['Review all mistakes', 'Pattern identification', 'Targeted improvement plan'], icon: 'fa-search' },
+      { day: 20, title: 'Mini Mock Test 2', tasks: ['Writing + Speaking combo', 'AI score prediction', 'Weakness report'], icon: 'fa-chart-pie' },
+      { day: 21, title: 'Mid-Program Review', tasks: ['Progress assessment', 'Band score prediction', 'Plan adjustment if needed'], icon: 'fa-sync' },
+    ]
+  },
+  4: { // Week 4 - Exam Mode
+    title: 'Week 4 — Real Exam Mode',
+    days: [
+      { day: 22, title: 'Full Mock Exam 1', tasks: ['All 4 sections', 'Real timer (2h 45m)', 'Comprehensive AI analysis'], icon: 'fa-file-alt' },
+      { day: 23, title: 'Weakness Intensive', tasks: ['Targeted practice drills', 'Writing error correction', 'Speaking impromptu round'], icon: 'fa-bullseye' },
+      { day: 24, title: 'Full Mock Exam 2', tasks: ['Full exam simulation', 'Score comparison', 'Improvement tracking'], icon: 'fa-file-alt' },
+      { day: 25, title: 'Speed & Accuracy', tasks: ['Timed reading sprint', 'Listening accuracy drill', 'Writing speed practice'], icon: 'fa-tachometer-alt' },
+      { day: 26, title: 'Full Mock Exam 3', tasks: ['Final full simulation', 'Readiness score calculation', 'Strengths confirmation'], icon: 'fa-file-alt' },
+      { day: 27, title: 'Final Weakness Fix', tasks: ['Last weak area practice', 'Confidence building exercises', 'Exam strategies review'], icon: 'fa-wrench' },
+      { day: 28, title: 'Exam Day Simulation', tasks: ['Full mock under exam conditions', 'No breaks, real pressure', 'Final AI assessment'], icon: 'fa-trophy' },
+      { day: 29, title: 'Light Review Day', tasks: ['Flashcard review', 'Key strategies recap', 'Relaxation techniques'], icon: 'fa-couch' },
+      { day: 30, title: 'Exam Ready!', tasks: ['Final confidence check', 'Quick tips review', 'You are ready! Go ace it!'], icon: 'fa-fire' },
+    ]
+  }
+};
 
-        statusDiv.style.display = "block";
-        statusDiv.className = "";
-        statusDiv.innerHTML = "Sending...";
+// Module data
+const moduleData = {
+  reading: {
+    title: 'Reading Module',
+    color: 'brand',
+    icon: 'fa-book-open',
+    features: [
+      { icon: 'fa-highlighter', title: 'Text Highlighting', desc: 'Highlight key parts of passages for reference during practice.' },
+      { icon: 'fa-stopwatch', title: 'Built-in Timer', desc: 'Timed passages to build speed and exam-day stamina.' },
+      { icon: 'fa-check-double', title: 'Instant Answers', desc: 'Get immediate feedback with detailed explanations.' },
+      { icon: 'fa-language', title: 'Vocabulary Popup', desc: 'Tap any word for meaning, pronunciation, and example.' },
+    ],
+    extras: ['Passage difficulty selector', 'Question type filters', 'Progress tracking by question type', 'AI reading speed analysis']
+  },
+  listening: {
+    title: 'Listening Module',
+    color: 'green',
+    icon: 'fa-headphones',
+    features: [
+      { icon: 'fa-play-circle', title: 'Audio Player', desc: 'Professional audio recordings with clear playback controls.' },
+      { icon: 'fa-tachometer-alt', title: 'Speed Control', desc: 'Practice at 0.75x, 1x, or 1.25x speed for progressive difficulty.' },
+      { icon: 'fa-globe', title: 'Accent Practice', desc: 'UK, Australian, and North American accents included.' },
+      { icon: 'fa-keyboard', title: 'Dictation Mode', desc: 'AI-powered dictation practice for spelling accuracy.' },
+    ],
+    extras: ['Section-wise practice', 'Note completion drills', 'Multiple choice mastery', 'AI listening score prediction']
+  },
+  writing: {
+    title: 'Writing Module',
+    color: 'blue',
+    icon: 'fa-pen-nib',
+    features: [
+      { icon: 'fa-chart-line', title: 'Task 1: Charts & Graphs', desc: 'Practice describing visual data with structured templates.' },
+      { icon: 'fa-paragraph', title: 'Task 2: Essays', desc: 'Argument, discussion, and problem-solution essay practice.' },
+      { icon: 'fa-spell-check', title: 'Grammar Correction', desc: 'AI detects and corrects grammar errors with explanations.' },
+      { icon: 'fa-link', title: 'Coherence Check', desc: 'Analysis of paragraph flow, linking words, and logical structure.' },
+    ],
+    extras: ['Band prediction per essay', 'Lexical resource scoring', 'Sample answer comparison', 'Timed writing mode']
+  },
+  speaking: {
+    title: 'Speaking Module',
+    color: 'purple',
+    icon: 'fa-microphone',
+    features: [
+      { icon: 'fa-microphone-alt', title: 'Voice Recording', desc: 'Record your responses and play back to self-evaluate.' },
+      { icon: 'fa-clone', title: 'Cue Card Practice', desc: 'Extensive cue card library with model answers.' },
+      { icon: 'fa-comments', title: 'Follow-up Questions', desc: 'AI-generated Part 3 questions based on your cue card.' },
+      { icon: 'fa-waveform', title: 'Pronunciation Score', desc: 'AI rates your pronunciation clarity and accuracy.' },
+    ],
+    extras: ['Fluency analysis', 'Filler word detection (um, uh, like)', 'Vocabulary range scoring', 'Comparison with native speaker samples']
+  }
+};
 
-        try {
-            const response = await fetch('https://textbelt.com/text', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({
-                    'phone': phone,
-                    'message': message,
-                    'key': 'textbelt', // Free Key
-                })
-            });
+// Vocabulary data
+const vocabularyData = [
+  { word: 'Ubiquitous', pron: '/juːˈbɪkwɪtəs/', meaning: 'Present, appearing, or found everywhere', example: 'Smartphones have become ubiquitous in modern society.' },
+  { word: 'Pragmatic', pron: '/præɡˈmætɪk/', meaning: 'Dealing with things sensibly and realistically', example: 'The government took a pragmatic approach to the crisis.' },
+  { word: 'Exacerbate', pron: '/ɪɡˈzæsərbeɪt/', meaning: 'To make a problem or situation worse', example: 'The drought was exacerbated by the extreme heat.' },
+  { word: 'Mitigate', pron: '/ˈmɪtɪɡeɪt/', meaning: 'To make less severe or intense', example: 'Measures were taken to mitigate the effects of the flood.' },
+  { word: 'Paradigm', pron: '/ˈpærədaɪm/', meaning: 'A typical example or pattern of something', example: 'The discovery created a new paradigm in physics.' },
+  { word: 'Resilient', pron: '/rɪˈzɪliənt/', meaning: 'Able to recover quickly from difficulties', example: 'Children are often more resilient than adults think.' },
+  { word: 'Ambiguous', pron: '/æmˈbɪɡjuəs/', meaning: 'Open to more than one interpretation', example: 'The wording of the contract was deliberately ambiguous.' },
+  { word: 'Deteriorate', pron: '/dɪˈtɪriəreɪt/', meaning: 'To become progressively worse', example: 'His health continued to deteriorate over the months.' },
+];
 
-            const data = await response.json();
+// FAQ data
+const faqData = [
+  { q: 'Can I really crack IELTS in 30 days with BandBoost?', a: 'Absolutely. Our structured 30-day roadmap is designed for focused, efficient preparation. Most students see 1.5-2 band improvement when they follow the plan consistently. The AI personalizes your journey based on your current level and weak areas.' },
+  { q: 'How accurate is the AI band prediction?', a: 'Our AI band predictor analyzes 40+ data points from your practice sessions — grammar accuracy, vocabulary range, coherence, fluency, and more. It\'s calibrated against real IELTS scoring criteria and provides estimates within ±0.5 band of actual scores in 87% of cases.' },
+  { q: 'What if I miss a day?', a: 'No worries! The AI Study Planner automatically adjusts your roadmap. It redistributes missed content across your remaining days, prioritizing your weakest areas. You can also manually reschedule tasks anytime.' },
+  { q: 'Is the free plan really free forever?', a: 'Yes! The free plan gives you limited daily practice, basic vocabulary, and 1 mini mock test per week — forever, no credit card needed. Upgrade to Premium for unlimited AI evaluation, full mock tests, and advanced analytics.' },
+  { q: 'Does BandBoost support both IELTS Academic and General Training?', a: 'Yes, BandBoost 30 fully supports both IELTS Academic and General Training. During onboarding, you select your exam type, and the AI customizes your roadmap, practice materials, and mock tests accordingly.' },
+  { q: 'Can I use BandBoost on my phone?', a: 'BandBoost is fully responsive and works great on any device. We also offer PWA support for an app-like experience on mobile. A dedicated mobile app for iOS and Android is coming soon!' },
+];
 
-            if (data.success) {
-                statusDiv.className = "success";
-                statusDiv.innerHTML = `Success! ID: ${data.textId} <br> Remaining: ${data.quotaRemaining}`;
-            } else {
-                statusDiv.className = "error";
-                statusDiv.innerHTML = "Error: " + data.error;
-            }
-        } catch (error) {
-            statusDiv.className = "error";
-            statusDiv.innerHTML = "Connection failed!";
-        }
+// ==================== FUNCTIONS ====================
+
+// Band slider
+function updateBandSlider(el) {
+  const val = ((el.value - 4) / 5) * 100;
+  el.style.setProperty('--val', val + '%');
+  document.getElementById('bandValue').textContent = parseFloat(el.value).toFixed(1);
+}
+
+// Toast notification
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// Modal management
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Auth tab switching
+function switchAuthTab(tab) {
+  const loginTab = document.getElementById('loginTab');
+  const signupTab = document.getElementById('signupTab');
+  const loginForm = document.getElementById('loginForm');
+  const signupForm = document.getElementById('signupForm');
+  if (tab === 'login') {
+    loginTab.classList.add('border-brand-500', 'text-white');
+    loginTab.classList.remove('border-transparent', 'text-surface-300');
+    signupTab.classList.remove('border-brand-500', 'text-white');
+    signupTab.classList.add('border-transparent', 'text-surface-300');
+    loginForm.classList.remove('hidden');
+    signupForm.classList.add('hidden');
+  } else {
+    signupTab.classList.add('border-brand-500', 'text-white');
+    signupTab.classList.remove('border-transparent', 'text-surface-300');
+    loginTab.classList.remove('border-brand-500', 'text-white');
+    loginTab.classList.add('border-transparent', 'text-surface-300');
+    signupForm.classList.remove('hidden');
+    loginForm.classList.add('hidden');
+  }
+}
+
+// Onboarding selection
+function selectOnboard(btn) {
+  const siblings = btn.parentElement.querySelectorAll('.onboard-btn');
+  siblings.forEach(s => s.classList.remove('bg-brand-500/20', 'text-brand-400', 'border-brand-500/30', 'border'));
+  btn.classList.add('bg-brand-500/20', 'text-brand-400', 'border', 'border-brand-500/30');
+}
+
+// 30-Day Roadmap
+let currentWeek = 1;
+function showWeek(week) {
+  currentWeek = week;
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.dataset.week) === week);
+  });
+  renderWeek(week);
+}
+
+function renderWeek(week) {
+  const container = document.getElementById('weekContainer');
+  const data = roadmapData[week];
+  container.innerHTML = '';
+  data.days.forEach((d, i) => {
+    const isCompleted = d.day < 7;
+    const isToday = d.day === 7;
+    const isLocked = d.day > 8;
+    let statusClass = isCompleted ? 'completed' : (isToday ? 'today' : (isLocked ? 'locked' : ''));
+    const card = document.createElement('div');
+    card.className = `day-cell glass rounded-2xl p-4 border border-transparent ${statusClass}`;
+    card.style.animationDelay = (i * 0.05) + 's';
+    card.innerHTML = `
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-xs font-semibold ${isCompleted ? 'text-green-400' : (isToday ? 'text-brand-400' : 'text-surface-300')}">Day ${d.day}</span>
+        ${isCompleted ? '<i class="fas fa-check-circle text-green-400 text-sm"></i>' : (isToday ? '<span class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>' : (isLocked ? '<i class="fas fa-lock text-surface-400 text-xs"></i>' : ''))}
+      </div>
+      <div class="w-10 h-10 rounded-xl ${isCompleted ? 'bg-green-500/15' : (isToday ? 'bg-brand-500/15' : 'bg-surface-500')} flex items-center justify-center mb-3">
+        <i class="fas ${d.icon} ${isCompleted ? 'text-green-400' : (isToday ? 'text-brand-400' : 'text-surface-300')} text-sm"></i>
+      </div>
+      <h4 class="font-medium text-sm mb-1 ${isLocked ? 'text-surface-300' : ''}">${d.title}</h4>
+      <p class="text-xs text-surface-300">${d.tasks.length} tasks</p>
+    `;
+    if (!isLocked) {
+      card.onclick = () => showDayDetail(d);
     }
-</script>
+    container.appendChild(card);
+  });
+}
 
+function showDayDetail(dayData) {
+  const detail = document.getElementById('dayDetail');
+  const title = document.getElementById('dayDetailTitle');
+  const content = document.getElementById('dayDetailContent');
+  detail.classList.remove('hidden');
+  title.textContent = `Day ${dayData.day}: ${dayData.title}`;
+  content.innerHTML = dayData.tasks.map((t, i) => `
+    <div class="flex items-center gap-3 glass rounded-xl p-3">
+      <div class="w-6 h-6 rounded-full border border-surface-300 flex items-center justify-center flex-shrink-0 text-xs font-bold">${i + 1}</div>
+      <span class="text-sm">${t}</span>
+    </div>
+  `).join('');
+  detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// Module tabs
+function showModule(mod) {
+  document.querySelectorAll('.module-tab').forEach(b => {
+    b.classList.toggle('active', b.dataset.mod === mod);
+  });
+  renderModule(mod);
+}
+
+function renderModule(mod) {
+  const data = moduleData[mod];
+  const container = document.getElementById('moduleContent');
+  const colorMap = { brand: 'brand', green: 'green', blue: 'blue', purple: 'purple' };
+  const c = colorMap[data.color] || 'brand';
+  container.innerHTML = `
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-12 h-12 rounded-xl bg-${c}-500/15 flex items-center justify-center">
+        <i class="fas ${data.icon} text-${c}-400 text-xl"></i>
+      </div>
+      <h3 class="font-display font-bold text-2xl">${data.title}</h3>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-4 mb-6">
+      ${data.features.map(f => `
+        <div class="glass rounded-xl p-4 flex gap-3">
+          <div class="w-10 h-10 rounded-lg bg-${c}-500/10 flex items-center justify-center flex-shrink-0">
+            <i class="fas ${f.icon} text-${c}-400 text-sm"></i>
+          </div>
+          <div>
+            <h4 class="font-medium text-sm mb-1">${f.title}</h4>
+            <p class="text-xs text-surface-200 leading-relaxed">${f.desc}</p>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="glass rounded-xl p-4">
+      <h4 class="font-medium text-sm mb-3 text-${c}-400">Extra Features</h4>
+      <div class="flex flex-wrap gap-2">
+        ${data.extras.map(e => `<span class="text-xs glass rounded-full px-3 py-1.5 text-surface-200">${e}</span>`).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// Vocabulary flashcards
+let currentCard = 0;
+function renderFlashcard() {
+  const card = vocabularyData[currentCard];
+  document.getElementById('flashWord').textContent = card.word;
+  document.getElementById('flashPron').textContent = card.pron;
+  document.getElementById('flashMeaning').textContent = card.meaning;
+  document.getElementById('flashExample').textContent = `"${card.example}"`;
+  document.getElementById('cardCounter').textContent = `${currentCard + 1} / ${vocabularyData.length}`;
+  document.getElementById('flashcardInner').classList.remove('flipped');
+}
+function flipCard() {
+  document.getElementById('flashcardInner').classList.toggle('flipped');
+}
+function nextCard() {
+  currentCard = (currentCard + 1) % vocabularyData.length;
+  renderFlashcard();
+}
+function prevCard() {
+  currentCard = (currentCard - 1 + vocabularyData.length) % vocabularyData.length;
+  renderFlashcard();
+}
+
+// Vocabulary quiz
+let quizIndex = 0;
+function renderQuiz() {
+  const card = vocabularyData[quizIndex];
+  document.getElementById('quizQuestion').innerHTML = `What does <strong class="text-brand-400">"${card.word}"</strong> mean?`;
+  const correct = card.meaning;
+  const wrong = vocabularyData.filter((_, i) => i !== quizIndex).map(v => v.meaning).sort(() => Math.random() - 0.5).slice(0, 3);
+  const options = [correct, ...wrong].sort(() => Math.random() - 0.5);
+  const container = document.getElementById('quizOptions');
+  container.innerHTML = options.map(o => `
+    <button class="quiz-opt glass rounded-xl p-3 text-sm text-left hover:bg-white/[0.08] transition" onclick="checkQuiz(this, '${o.replace(/'/g, "\\'")}', '${correct.replace(/'/g, "\\'")}')">${o}</button>
+  `).join('');
+  document.getElementById('quizFeedback').classList.add('hidden');
+}
+function checkQuiz(btn, selected, correct) {
+  const allBtns = document.querySelectorAll('.quiz-opt');
+  allBtns.forEach(b => b.disabled = true);
+  const feedback = document.getElementById('quizFeedback');
+  if (selected === correct) {
+    btn.classList.add('bg-green-500/20', 'border', 'border-green-500/30');
+    feedback.textContent = 'Correct! Well done!';
+    feedback.className = 'text-center text-sm mt-4 font-medium text-green-400';
+  } else {
+    btn.classList.add('bg-red-500/20', 'border', 'border-red-500/30');
+    allBtns.forEach(b => {
+      if (b.textContent === correct) b.classList.add('bg-green-500/20', 'border', 'border-green-500/30');
+    });
+    feedback.textContent = 'Not quite. The correct answer is highlighted.';
+    feedback.className = 'text-center text-sm mt-4 font-medium text-red-400';
+  }
+  feedback.classList.remove('hidden');
+  setTimeout(() => {
+    quizIndex = (quizIndex + 1) % vocabularyData.length;
+    renderQuiz();
+  }, 2000);
+}
+
+// Task toggle (dashboard demo)
+function toggleTask(el) {
+  const check = el.querySelector('.task-check');
+  const text = el.querySelector('span.text-sm');
+  if (!check) return; // Already completed
+  check.classList.add('border-green-500', 'bg-green-500/20');
+  check.innerHTML = '<i class="fas fa-check text-green-400 text-xs"></i>';
+  check.classList.remove('task-check');
+  text.classList.add('line-through', 'text-surface-300');
+  text.classList.remove('text-white');
+  showToast('Task completed! XP earned.');
+}
+
+// Billing toggle
+let isYearly = false;
+function toggleBilling() {
+  isYearly = !isYearly;
+  const dot = document.getElementById('billingDot');
+  const mLabel = document.getElementById('monthlyLabel');
+  const yLabel = document.getElementById('yearlyLabel');
+  const price = document.getElementById('priceDisplay');
+  const period = document.getElementById('pricePeriod');
+  if (isYearly) {
+    dot.style.left = 'calc(100% - 24px)';
+    mLabel.classList.remove('text-white'); mLabel.classList.add('text-surface-300');
+    yLabel.classList.remove('text-surface-300'); yLabel.classList.add('text-white');
+    price.textContent = '$11';
+    period.textContent = 'per month (billed yearly)';
+  } else {
+    dot.style.left = '4px';
+    yLabel.classList.remove('text-white'); yLabel.classList.add('text-surface-300');
+    mLabel.classList.remove('text-surface-300'); mLabel.classList.add('text-white');
+    price.textContent = '$19';
+    period.textContent = 'per month';
+  }
+}
+
+// FAQ
+function renderFAQ() {
+  const container = document.getElementById('faqContainer');
+  container.innerHTML = faqData.map((f, i) => `
+    <div class="glass rounded-xl overflow-hidden">
+      <button class="w-full flex items-center justify-between p-5 text-left" onclick="toggleFAQ(${i})" aria-expanded="false">
+        <span class="font-medium text-sm pr-4">${f.q}</span>
+        <i class="fas fa-chevron-down text-surface-300 text-xs transition-transform" id="faqIcon${i}"></i>
+      </button>
+      <div id="faqBody${i}" class="hidden px-5 pb-5">
+        <p class="text-sm text-surface-200 leading-relaxed">${f.a}</p>
+      </div>
+    </div>
+  `).join('');
+}
+function toggleFAQ(i) {
+  const body = document.getElementById('faqBody' + i);
+  const icon = document.getElementById('faqIcon' + i);
+  const isOpen = !body.classList.contains('hidden');
+  body.classList.toggle('hidden');
+  icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+}
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('.counter').forEach(counter => {
+    const target = parseInt(counter.dataset.target);
+    const duration = 2000;
+    const start = performance.now();
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease out cubic
+      const current = Math.floor(eased * target);
+      counter.textContent = current.toLocaleString();
+      if (progress < 1) requestAnimationFrame(update);
+      else counter.textContent = target.toLocaleString() + '+';
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// Intersection Observer for slide-up animations
+function setupScrollAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.slide-up').forEach(el => observer.observe(el));
+}
+
+// Hero particle canvas
+function initHeroCanvas() {
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let mouseX = 0, mouseY = 0;
+
+  function resize() {
+    canvas.width = canvas.parentElement.offsetWidth;
+    canvas.height = canvas.parentElement.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  canvas.parentElement.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouseX = e.clientX - rect.left;
+    mouseY = e.clientY - rect.top;
+  });
+
+  // Create particles
+  for (let i = 0; i < 60; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      size: Math.random() * 2 + 0.5,
+      opacity: Math.random() * 0.4 + 0.1,
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+
+      // Mouse influence
+      const dx = mouseX - p.x;
+      const dy = mouseY - p.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 150) {
+        p.vx -= dx * 0.00005;
+        p.vy -= dy * 0.00005;
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, Math.max(0.5, p.size), 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(249, 105, 7, ${p.opacity})`;
+      ctx.fill();
+    });
+
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(249, 105, 7, ${0.08 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// Mobile menu
+document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('hidden');
+});
+// Close mobile menu on link click
+document.querySelectorAll('#mobileMenu a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden'));
+});
+
+// Navbar scroll effect
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const navbar = document.getElementById('navbar');
+  const scrollY = window.scrollY;
+  if (scrollY > 100) {
+    navbar.style.background = 'rgba(8,8,15,0.95)';
+  } else {
+    navbar.style.background = 'rgba(8,8,15,0.8)';
+  }
+  lastScroll = scrollY;
+});
+
+// ==================== INIT ====================
+document.addEventListener('DOMContentLoaded', () => {
+  initHeroCanvas();
+  renderWeek(1);
+  renderModule('reading');
+  renderFlashcard();
+  renderQuiz();
+  renderFAQ();
+  setupScrollAnimations();
+  updateBandSlider(document.getElementById('bandSlider'));
+
+  // Trigger counter animation when hero is visible
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        counterObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const heroStats = document.querySelector('#hero .grid');
+  if (heroStats) counterObserver.observe(heroStats);
+});
+</script>
 </body>
 </html>
